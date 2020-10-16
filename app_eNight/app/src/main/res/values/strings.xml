@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">eNight</string>
-    <string name="logo_night_shop">logo night shop</string>
-    <string name="button_connexion">Connexion</string>
-    <string name="string_placeholder_email">Enter a valid Email</string>
-</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">eNight</string>
+    <string name="logo_night_shop">logo night shop</string>
+    <string name="string_placeholder_email">Enter your Email</string>
+    <string name="button_connexion">Connexion</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="matricule">Matricule : </string>
+    <string name="nom">Nom : </string>
+    <string name="prenom">Prenom : </string>
+    <string name="about_me">About Me</string>
+</resources>

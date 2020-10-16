@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.enight.AboutFragment">
+
+    <data>
+        <variable
+            name="myName"
+            type="com.example.enight.MyName" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/about_me"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_night_shop_from_about"
+            android:layout_width="362dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/logo_night_shop"
+            android:src="@drawable/night_shop_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/matricule_value"
+            android:layout_width="118dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="@={myName.matricule}"
+            app:layout_constraintBottom_toTopOf="@+id/nom_value"
+            app:layout_constraintStart_toEndOf="@+id/matricule"
+            app:layout_constraintTop_toBottomOf="@+id/logo_night_shop_from_about" />
+
+        <TextView
+            android:id="@+id/nom"
+            android:layout_width="77dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/nom"
+            app:layout_constraintBottom_toTopOf="@+id/prenom"
+            app:layout_constraintTop_toBottomOf="@+id/matricule"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/matricule"
+            android:layout_width="79dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/matricule"
+            app:layout_constraintBottom_toTopOf="@+id/nom"
+            app:layout_constraintTop_toBottomOf="@+id/logo_night_shop_from_about"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/nom_value"
+            android:layout_width="118dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="@={myName.nom}"
+            app:layout_constraintBottom_toTopOf="@+id/prenom_value"
+            app:layout_constraintStart_toEndOf="@+id/nom"
+            app:layout_constraintTop_toBottomOf="@+id/matricule_value" />
+
+        <TextView
+            android:id="@+id/prenom"
+            android:layout_width="81dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/prenom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nom"
+            tools:layout_editor_absoluteX="14dp" />
+
+        <TextView
+            android:id="@+id/prenom_value"
+            android:layout_width="117dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="@={myName.prenom}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/prenom"
+            app:layout_constraintTop_toBottomOf="@+id/nom_value" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
