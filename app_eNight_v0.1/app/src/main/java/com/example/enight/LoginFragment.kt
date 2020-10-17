@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.enight.databinding.FragmentLoginBinding
 //import androidx.fragment.app.Fragment
@@ -28,7 +29,6 @@ class LoginFragment : Fragment() {
             buttonConnexion.setOnClickListener {
                 check(it)
             }
-
         }
         setHasOptionsMenu(true)
         return bindingLogin.root
@@ -50,7 +50,6 @@ class LoginFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(item,findNavController()) || super.onOptionsItemSelected(item)
     }
 }

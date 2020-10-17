@@ -19,6 +19,7 @@ class AboutFragment : Fragment() {
         bindingAbout = DataBindingUtil.inflate<FragmentAboutMeBinding>(inflater,R.layout.fragment_about_me,
         container,false)
         bindingAbout.myName = moi
+
         return bindingAbout.root
     }
 }

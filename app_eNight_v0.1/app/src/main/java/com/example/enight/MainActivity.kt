@@ -10,7 +10,9 @@ import androidx.navigation.ui.NavigationUI
 import com.example.enight.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var drawer : DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
