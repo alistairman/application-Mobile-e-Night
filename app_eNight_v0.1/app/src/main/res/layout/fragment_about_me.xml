@@ -2,19 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.enight.AboutFragment">
+    tools:context="com.example.enight.view.about.AboutFragment">
 
     <data>
         <variable
-            name="myName"
-            type="com.example.enight.MyName" />
+            name="AboutViewModel"
+            type="com.example.enight.view.about.AboutViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/aboutFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:tag="layout/fragment_about_me">
 
         <ImageView
             android:id="@+id/logo_night_shop_from_about"
@@ -33,10 +34,11 @@
             android:layout_height="23dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
-            android:text="@={myName.matricule}"
+            android:text="@{@string/quote_format(AboutViewModel.aboutMe.matricule)}"
             app:layout_constraintBottom_toTopOf="@+id/nom_value"
             app:layout_constraintStart_toEndOf="@+id/matricule"
-            app:layout_constraintTop_toBottomOf="@+id/logo_night_shop_from_about" />
+            app:layout_constraintTop_toBottomOf="@+id/logo_night_shop_from_about"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/nom"
@@ -46,6 +48,7 @@
             android:text="@string/nom"
             app:layout_constraintBottom_toTopOf="@+id/prenom"
             app:layout_constraintTop_toBottomOf="@+id/matricule"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="16dp" />
 
         <TextView
@@ -56,6 +59,8 @@
             android:text="@string/matricule"
             app:layout_constraintBottom_toTopOf="@+id/nom"
             app:layout_constraintTop_toBottomOf="@+id/logo_night_shop_from_about"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="16dp" />
 
         <TextView
@@ -64,7 +69,7 @@
             android:layout_height="21dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
-            android:text="@={myName.nom}"
+            android:text="@{@string/quote_format(AboutViewModel.aboutMe.nom)}"
             app:layout_constraintBottom_toTopOf="@+id/prenom_value"
             app:layout_constraintStart_toEndOf="@+id/nom"
             app:layout_constraintTop_toBottomOf="@+id/matricule_value" />
@@ -77,6 +82,7 @@
             android:text="@string/prenom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nom"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="14dp" />
 
         <TextView
@@ -85,9 +91,9 @@
             android:layout_height="21dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
-            android:text="@={myName.prenom}"
+            android:text="@{@string/quote_format(AboutViewModel.aboutMe.prenom)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/prenom"
             app:layout_constraintTop_toBottomOf="@+id/nom_value" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
