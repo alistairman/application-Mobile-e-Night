@@ -1,3 +1,5 @@
+@file:Suppress("Annotator", "Annotator", "Annotator", "Annotator", "Annotator")
+
 package com.example.enight.view.about
 
 import android.os.Bundle

@@ -2,7 +2,6 @@ package com.example.enight
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -11,8 +10,7 @@ import com.example.enight.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var drawer : DrawerLayout
-
+    private lateinit var drawer : DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +20,8 @@ class MainActivity : AppCompatActivity() {
         drawer = binding.drawerLayout
 
         val navController = this.findNavController(R.id.myNavHostFragment)
-
         NavigationUI.setupActionBarWithNavController(this,navController,drawer)
-
         NavigationUI.setupWithNavController(binding.navView, navController)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,8 +1,14 @@
+@file:Suppress("RecursivePropertyAccessor")
+
 package com.example.enight.view.login
 
 import android.annotation.SuppressLint
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.databinding.InverseMethod
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.enight.dataBase.Email
 import com.example.enight.dataBase.EmailDatabaseDao
 import kotlinx.coroutines.launch
@@ -12,13 +18,13 @@ import java.text.SimpleDateFormat
  * this class represent the data of the view of user interface
  */
 class LoginViewModel(
-    val database: EmailDatabaseDao,
+    private val database: EmailDatabaseDao,
     application: Application ) : AndroidViewModel(application) {
 
     /**
      * this variable is the checking format of the email input
      */
-    val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
     /**
      * this variable is the live data of the current mail logged
@@ -30,6 +36,13 @@ class LoginViewModel(
      */
     lateinit var allMail :Array<String>
 
+
+    val emailText = MutableLiveData<String>()
+
+    private val _isValid = MutableLiveData<Boolean>()
+         val isValid :LiveData<Boolean>
+        get() = _isValid
+
     /**
      * this method initialize the current mail logged
      * and initialize the array of all mail from database
@@ -38,7 +51,12 @@ class LoginViewModel(
         viewModelScope.launch {
             initializeCurrentLog()
             initializeListMail()
+            emailText.value = "coucou"
         }
+    }
+
+    private fun onMailValided(){
+        _isValid.value = true
     }
 
     /**
@@ -57,11 +75,20 @@ class LoginViewModel(
         allMail = arrayOf(name.toString())
     }
 
+    fun onConnexion(){
+        val input = emailText.toString().trim()
+        if(input.matches(emailPattern.toRegex())){
+            onMailValided()
+            getMail()
+        }
+    }
+
     /**
      * this method find and get mail from inputed from edited text in database
      */
-    fun getMail(value:String){
+    private fun getMail(){
         viewModelScope.launch {
+            val value = emailText.value.toString()
             val mail = database.getMail(value)
             if (mail?.mail != value) emailNotFound(value)
             else emailFound(mail)

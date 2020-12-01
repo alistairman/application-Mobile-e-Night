@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
     /**
      * this variable is the array to test autocomplete
      */
-    private val fruit = arrayOf("alis", "banane","coucou")
+    //private val fruit = arrayOf("alis", "banane","coucou")
 
     /**
      * this method make and build data and initialize the view of this fragment
@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        bindingLogin = DataBindingUtil.inflate<FragmentLoginBinding>(
+        bindingLogin = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login,
             container, false
         )
@@ -68,14 +68,15 @@ class LoginFragment : Fragment() {
             android.R.layout.select_dialog_item,
             viewModel.allMail
         )
+
         val actv : AutoCompleteTextView = bindingLogin.editEmail
-        actv.setThreshold(1)
+        actv.threshold = 1
         actv.setAdapter(adapter)
 
-        bindingLogin.buttonConnexion.setOnClickListener{ it ->
-            checkMail(it)
-            showCurrentMail()
-        }
+        viewModel.isValid.observe(viewLifecycleOwner, {
+            if (it==true) valided()
+            else notValided()
+        })
 
         setHasOptionsMenu(true)
         return bindingLogin.root
@@ -87,19 +88,15 @@ class LoginFragment : Fragment() {
      * if is valided show the toast the notify is valid and ckeck datamail from database
      * if not show snackbar that the input mail is not valid
      */
-    private fun checkMail(it: View){
-        val mail = bindingLogin.editEmail.text.trim()
-        val ck = viewModel.emailPattern
+    private fun valided(){
+        Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
+        showCurrentMail()
+    }
 
-        if (mail.matches(ck.toRegex())) {
-            Toast.makeText(requireActivity(), "Email Valided", Toast.LENGTH_LONG).show()
-            viewModel.getMail(bindingLogin.editEmail.text.toString())
-
-        } else {
-            Snackbar.make(it, "Email not Valided", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-            bindingLogin.editEmail.setTextColor(RED)
-        }
+    private fun notValided() {
+        Snackbar.make(requireView(), "Email not Valided", Snackbar.LENGTH_LONG)
+            .setAction("Action", null).show()
+        bindingLogin.editEmail.setTextColor(RED)
     }
 
     /**
