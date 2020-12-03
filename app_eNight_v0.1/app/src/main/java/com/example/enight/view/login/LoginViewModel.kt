@@ -3,6 +3,7 @@ package com.example.enight.view.login
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.util.Patterns
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -31,8 +32,15 @@ class LoginViewModel(
      * this variable is the array of the all mail from the database
      */
     val allMail = ArrayList<String>()
+
+    /**
+     * this variable get the value from the editText
+     */
     val emailText = MutableLiveData<String>()
 
+    /**
+     * this variable get the true if the email is valided
+     */
     private val _isValid = MutableLiveData<Boolean>()
          val isValid :LiveData<Boolean>
         get() = _isValid
@@ -49,9 +57,6 @@ class LoginViewModel(
         }
     }
 
-    private fun onMailValided(){
-        _isValid.value = true
-    }
 
     /**
      * this method initialize the current mail logged
@@ -74,10 +79,13 @@ class LoginViewModel(
         }
     }
 
+    /**
+     * this method check if input mail is not empty
+     * and if the email is in valid format
+     */
     fun onConnexion(){
-        onMailValided()
-        //if(emailText)
-
+        _isValid.value = !emailText.value!!.isEmpty()
+                && Patterns.EMAIL_ADDRESS.matcher(emailText.value!!.trim()).matches()
     }
 
     /**

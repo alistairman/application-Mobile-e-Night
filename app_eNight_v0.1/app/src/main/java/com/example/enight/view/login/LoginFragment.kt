@@ -2,6 +2,7 @@
 
 package com.example.enight.view.login
 
+import android.graphics.Color.BLACK
 import android.graphics.Color.RED
 import android.os.Build
 import android.os.Bundle
@@ -87,10 +88,15 @@ class LoginFragment : Fragment() {
      */
     private fun valided(){
         Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
+        bindingLogin.editEmail.setTextColor(BLACK)
         viewModel.getMail()
         showCurrentMail()
     }
 
+    /**
+     * this method show the snackbar if the email is not correctly filled
+     * and change the color of input mail to red
+     */
     private fun notValided() {
         Snackbar.make(requireView(), "Email not Valided", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show()
