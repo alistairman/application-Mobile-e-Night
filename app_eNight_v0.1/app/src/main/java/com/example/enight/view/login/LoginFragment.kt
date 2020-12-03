@@ -1,3 +1,5 @@
+@file:Suppress("Annotator")
+
 package com.example.enight.view.login
 
 import android.graphics.Color.RED
@@ -34,11 +36,6 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
 
     /**
-     * this variable is the array to test autocomplete
-     */
-    //private val fruit = arrayOf("alis", "banane","coucou")
-
-    /**
      * this method make and build data and initialize the view of this fragment
      * initialize the autocomplete but till now doesn't work with database
      * and build menu of this fragment
@@ -62,7 +59,6 @@ class LoginFragment : Fragment() {
         bindingLogin.loginViewModel = viewModel
         bindingLogin.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.initializeListMail()
         val adapter = ArrayAdapter(
             requireActivity(),
             android.R.layout.select_dialog_item,
@@ -73,9 +69,10 @@ class LoginFragment : Fragment() {
         actv.threshold = 1
         actv.setAdapter(adapter)
 
-        viewModel.isValid.observe(viewLifecycleOwner, {
-            if (it==true) valided()
+        viewModel.isValid.observe(viewLifecycleOwner, { ok ->
+            if (ok) valided()
             else notValided()
+
         })
 
         setHasOptionsMenu(true)
@@ -90,6 +87,7 @@ class LoginFragment : Fragment() {
      */
     private fun valided(){
         Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
+        viewModel.getMail()
         showCurrentMail()
     }
 

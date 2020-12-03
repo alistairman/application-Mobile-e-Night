@@ -51,6 +51,6 @@ interface EmailDatabaseDao {
     /**
      * this method get all data from database
      */
-    @Query("select * from login_mail order by mailId asc")
-    fun getAll(): LiveData<List<Email?>>
+    @Query("select * from login_mail order by mailId desc")
+    fun getAll(): LiveData<List<Email>>
 }

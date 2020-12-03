@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 /**
  * this class represent the connection to the database
  */
-@Database(entities = [Email::class], version = 2, exportSchema = false)
+@Database(entities = [Email::class], version = 3, exportSchema = false)
 abstract class EmailDatabase : RoomDatabase() {
 
     /**
@@ -31,7 +31,7 @@ abstract class EmailDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         EmailDatabase::class.java,
-                        "sleep_history_database"
+                        "Login_dataBase"
                     ).fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }

@@ -1,10 +1,8 @@
-@file:Suppress("RecursivePropertyAccessor")
 
 package com.example.enight.view.login
 
 import android.annotation.SuppressLint
 import android.app.Application
-import androidx.databinding.InverseMethod
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,22 +19,18 @@ class LoginViewModel(
     private val database: EmailDatabaseDao,
     application: Application ) : AndroidViewModel(application) {
 
-    /**
-     * this variable is the checking format of the email input
-     */
-    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
     /**
      * this variable is the live data of the current mail logged
      */
     var currentLog = MutableLiveData<Email?>()
 
+    //private val emails = database.getAll()
+
     /**
      * this variable is the array of the all mail from the database
      */
-    lateinit var allMail :Array<String>
-
-
+    val allMail = ArrayList<String>()
     val emailText = MutableLiveData<String>()
 
     private val _isValid = MutableLiveData<Boolean>()
@@ -51,7 +45,7 @@ class LoginViewModel(
         viewModelScope.launch {
             initializeCurrentLog()
             initializeListMail()
-            emailText.value = "coucou"
+            emailText.value = ""
         }
     }
 
@@ -64,29 +58,32 @@ class LoginViewModel(
      */
     private suspend fun initializeCurrentLog() {
         currentLog.value = database.getToMail()
-        currentLog.value = database.getToMail()
     }
 
     /**
-     * this method initialize the array of all mail from database
+     * this method initialize the array 'allMail' with all mail from database
      */
-    fun initializeListMail(){
-        val name = currentLog.value?.mail
-        allMail = arrayOf(name.toString())
+    private fun initializeListMail(){
+        viewModelScope.launch {
+            var index = 1L
+            while(database.get(index) != null){
+                val mail = database.get(index)
+                allMail.add(mail!!.mail)
+                index += 1
+            }
+        }
     }
 
     fun onConnexion(){
-        val input = emailText.toString().trim()
-        if(input.matches(emailPattern.toRegex())){
-            onMailValided()
-            getMail()
-        }
+        onMailValided()
+        //if(emailText)
+
     }
 
     /**
      * this method find and get mail from inputed from edited text in database
      */
-    private fun getMail(){
+    fun getMail(){
         viewModelScope.launch {
             val value = emailText.value.toString()
             val mail = database.getMail(value)
@@ -105,9 +102,10 @@ class LoginViewModel(
         val time = System.currentTimeMillis()
         mail.date = SimpleDateFormat("EEE, MMM dd , ''yy").format(time).toString()
         mail.time = SimpleDateFormat("HH:mm:ss").format(time).toString()
-        update(mail)
-        currentLog.value = mail
-
+        viewModelScope.launch {
+            update(mail)
+            currentLog.value = database.getMail(mail.mail)
+        }
     }
 
     /**
@@ -115,13 +113,15 @@ class LoginViewModel(
      * then the new email is save into the database and the currentlog is updated
      */
     @SuppressLint("SimpleDateFormat")
-    private suspend fun emailNotFound(value: String) {
+    private suspend fun emailNotFound(value: String){
         val time = System.currentTimeMillis()
         val dateString = SimpleDateFormat("EEE, MMM dd , ''yy").format(time).toString()
         val timeString = SimpleDateFormat("HH:mm:ss").format(time).toString()
         val mail = Email(0,value,dateString,timeString)
-        insert(mail)
-        currentLog.value = database.getToMail()
+        viewModelScope.launch {
+            insert(mail)
+            initializeCurrentLog()
+        }
     }
 
     /**

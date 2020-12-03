@@ -27,11 +27,11 @@ data class Email (
      * this variable represent the date when data is used
      */
     @ColumnInfo(name = "log_date")
-    var date: String = "MM-dd-yyyy",
+    var date: String = "",
 
     /**
      * this variable represent the time when data is used
      */
     @ColumnInfo(name = "log_start")
-    var time : String = "HH:mm:ss"
+    var time : String = ""
 )
