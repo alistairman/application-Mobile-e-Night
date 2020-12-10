@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.enight.R
@@ -73,7 +74,6 @@ class LoginFragment : Fragment() {
         viewModel.isValid.observe(viewLifecycleOwner, { ok ->
             if (ok) valided()
             else notValided()
-
         })
 
         setHasOptionsMenu(true)
@@ -90,7 +90,8 @@ class LoginFragment : Fragment() {
         Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
         bindingLogin.editEmail.setTextColor(BLACK)
         viewModel.getMail()
-        showCurrentMail()
+        requireView().findNavController().navigate(R.id.action_loginFragment2_to_usersFragment)
+
     }
 
     /**
