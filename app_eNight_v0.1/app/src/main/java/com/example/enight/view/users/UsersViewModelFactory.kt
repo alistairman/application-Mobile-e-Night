@@ -3,8 +3,7 @@ package com.example.enight.view.users
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.enight.dataBase.EmailDatabaseDao
-import com.example.enight.view.login.LoginViewModel
+import com.example.enight.dataBase.email.EmailDatabaseDao
 
 class UsersViewModelFactory(
     private val database: EmailDatabaseDao,

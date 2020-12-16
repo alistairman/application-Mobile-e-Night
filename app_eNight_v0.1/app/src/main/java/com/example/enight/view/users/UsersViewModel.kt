@@ -2,9 +2,7 @@ package com.example.enight.view.users
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.enight.dataBase.EmailDatabaseDao
-import kotlinx.coroutines.launch
+import com.example.enight.dataBase.email.EmailDatabaseDao
 
 class UsersViewModel(
     private val database: EmailDatabaseDao,

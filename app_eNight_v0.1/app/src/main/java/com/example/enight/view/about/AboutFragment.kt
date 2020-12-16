@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.enight.R
-import com.example.enight.databinding.FragmentAboutMeBinding
 import androidx.lifecycle.ViewModelProvider
+import com.example.enight.databinding.AboutMeBinding
 
 /**
  * this class represent user interface of the about fragment
@@ -32,9 +32,9 @@ class AboutFragment : Fragment() {
         /**
          * this variable represent the data binding of this fragment
          */
-        val bindingAbout: FragmentAboutMeBinding = DataBindingUtil.inflate(
+        val bindingAbout: AboutMeBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_about_me,
+            R.layout.about_me,
             container,false)
 
         viewModel = ViewModelProvider(this).get(AboutViewModel::class.java)

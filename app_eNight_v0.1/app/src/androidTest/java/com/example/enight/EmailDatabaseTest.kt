@@ -3,9 +3,9 @@ package com.example.enight
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.enight.dataBase.Email
-import com.example.enight.dataBase.EmailDatabase
-import com.example.enight.dataBase.EmailDatabaseDao
+import com.example.enight.dataBase.email.Email
+import com.example.enight.dataBase.email.EmailDatabase
+import com.example.enight.dataBase.email.EmailDatabaseDao
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before

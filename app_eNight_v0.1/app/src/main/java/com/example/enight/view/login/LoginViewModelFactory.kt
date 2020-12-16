@@ -3,7 +3,7 @@ package com.example.enight.view.login
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.enight.dataBase.EmailDatabaseDao
+import com.example.enight.dataBase.email.EmailDatabaseDao
 
 /**
  * this class represent the factory of the fragment

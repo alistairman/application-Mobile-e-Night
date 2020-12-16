@@ -6,15 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.R
-import com.example.enight.dataBase.EmailDatabase
-import com.example.enight.dataBase.EmailDatabaseDao
+import com.example.enight.dataBase.email.EmailDatabase
 import com.example.enight.databinding.UsersBinding
-import com.example.enight.view.login.LoginViewModel
-import com.example.enight.view.login.LoginViewModelFactory
 
 class UsersFragment : Fragment() {
 

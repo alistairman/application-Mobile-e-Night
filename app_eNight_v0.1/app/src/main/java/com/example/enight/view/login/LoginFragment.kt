@@ -18,8 +18,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.enight.R
-import com.example.enight.dataBase.EmailDatabase
-import com.example.enight.databinding.FragmentLoginBinding
+import com.example.enight.dataBase.email.EmailDatabase
+import com.example.enight.databinding.LoginBinding
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
     /**
      * this variable represent the data binding of this fragment
      */
-    private lateinit var bindingLogin: FragmentLoginBinding
+    private lateinit var bindingLogin: LoginBinding
 
     /**
      * this variable represent the view of this fragment
@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
     ): View? {
 
         bindingLogin = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_login,
+            inflater, R.layout.login,
             container, false
         )
 

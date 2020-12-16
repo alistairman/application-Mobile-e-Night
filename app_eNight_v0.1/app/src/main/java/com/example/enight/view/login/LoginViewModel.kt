@@ -8,8 +8,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.enight.dataBase.Email
-import com.example.enight.dataBase.EmailDatabaseDao
+import com.example.enight.dataBase.email.Email
+import com.example.enight.dataBase.email.EmailDatabaseDao
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 

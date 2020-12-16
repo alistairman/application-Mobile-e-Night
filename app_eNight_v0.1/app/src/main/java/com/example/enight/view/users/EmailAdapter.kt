@@ -1,13 +1,12 @@
 package com.example.enight.view.users
 
-import TextItemViewHolder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enight.R
-import com.example.enight.dataBase.Email
+import com.example.enight.dataBase.email.Email
 
 class EmailAdapter: RecyclerView.Adapter<EmailAdapter.ViewHolder>() {
 

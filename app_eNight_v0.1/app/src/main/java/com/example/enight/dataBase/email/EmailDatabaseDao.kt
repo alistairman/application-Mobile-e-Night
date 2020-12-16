@@ -1,10 +1,11 @@
-package com.example.enight.dataBase
+package com.example.enight.dataBase.email
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.enight.dataBase.email.Email
 
 /**
  * this class is the dao of the data base
