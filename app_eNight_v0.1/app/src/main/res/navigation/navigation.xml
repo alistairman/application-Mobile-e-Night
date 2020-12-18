@@ -12,8 +12,10 @@
         android:label="@string/login_value"
         tools:layout="@layout/login">
         <action
-            android:id="@+id/action_loginFragment2_to_usersFragment"
-            app:destination="@id/usersFragment" />
+            android:id="@+id/action_loginFragment2_to_categoryFragment"
+            app:destination="@id/categoryFragment"
+            app:popUpTo="@id/loginFragment2"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -30,4 +32,9 @@
         android:name="com.example.enight.view.about.RulesFragment"
         android:label="@string/rules_value"
         tools:layout="@layout/rules" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.enight.CategoryFragment"
+        android:label="@string/category_label"
+        tools:layout="@layout/category" />
 </navigation>

@@ -16,4 +16,5 @@
     <string name="about_value">About Me</string>
     <string name="users_value">Users</string>
     <string name="rules_value">Rules</string>
+    <string name="category_label">Category</string>
 </resources>
