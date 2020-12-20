@@ -37,4 +37,9 @@
         android:name="com.example.enight.CategoryFragment"
         android:label="@string/category_label"
         tools:layout="@layout/category" />
+    <fragment
+        android:id="@+id/nightShopFragment"
+        android:name="com.example.enight.NightShopFragment"
+        android:label="night_shop"
+        tools:layout="@layout/night_shop" />
 </navigation>

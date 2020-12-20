@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.enight.dataBase.email.Email
-import com.example.enight.dataBase.email.EmailDatabase
+import com.example.enight.dataBase.Enight_Database
 import com.example.enight.dataBase.email.EmailDatabaseDao
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -20,15 +20,15 @@ import java.io.IOException
  */
 
 @RunWith(AndroidJUnit4::class)
-class EmailDatabaseTest {
+class EnightDatabaseTest {
 
     private lateinit var emailDao: EmailDatabaseDao
-    private lateinit var db: EmailDatabase
+    private lateinit var db: Enight_Database
 
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        db = Room.inMemoryDatabaseBuilder(context, EmailDatabase::class.java).allowMainThreadQueries().build()
+        db = Room.inMemoryDatabaseBuilder(context, Enight_Database::class.java).allowMainThreadQueries().build()
         emailDao = db.emailDatabaseDao
     }
 

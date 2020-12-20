@@ -9,7 +9,7 @@ import com.example.enight.databinding.CategoryBinding
 
 class CategoryFragment : Fragment() {
 
-    lateinit var menuIt : MenuItem
+    private lateinit var menuIt : MenuItem
 
     companion object {
         fun newInstance() = CategoryFragment()
@@ -20,15 +20,13 @@ class CategoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = DataBindingUtil.inflate<CategoryBinding>(
             inflater,R.layout.category,container,false)
 
         setHasOptionsMenu(true)
-
         return binding.root
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -38,7 +36,7 @@ class CategoryFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menuIt = menu.add("add");
+        menuIt = menu.add("add")
         //menuIt.setIcon(R.drawable.btn_star_big_off);
     }
 

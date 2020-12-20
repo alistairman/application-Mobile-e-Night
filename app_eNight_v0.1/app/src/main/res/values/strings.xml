@@ -17,4 +17,8 @@
     <string name="users_value">Users</string>
     <string name="rules_value">Rules</string>
     <string name="category_label">Category</string>
+    <string name="email_user">Email Address :</string>
+    <string name="firstName_label_value">First Name :</string>
+    <string name="lastName_label_value">Last Name :</string>
+    <string name="update_profile_button">UpDate</string>
 </resources>

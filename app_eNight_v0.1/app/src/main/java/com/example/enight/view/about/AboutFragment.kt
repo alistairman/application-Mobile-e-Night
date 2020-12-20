@@ -17,17 +17,13 @@ import com.example.enight.databinding.AboutMeBinding
  */
 class AboutFragment : Fragment() {
 
-    /**
-     * this variable is the reference to the view of this fragment
-     */
-    private lateinit var viewModel: AboutViewModel
 
     /**
      * this method initialize data and view when this fragment is created
      */
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
         /**
          * this variable represent the data binding of this fragment
@@ -37,10 +33,8 @@ class AboutFragment : Fragment() {
             R.layout.about_me,
             container,false)
 
-        viewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
-
+        val viewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
         bindingAbout.aboutViewModel = viewModel
-
         bindingAbout.lifecycleOwner = viewLifecycleOwner
 
         return bindingAbout.root

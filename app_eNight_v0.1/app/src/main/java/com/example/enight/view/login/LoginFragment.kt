@@ -18,7 +18,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.enight.R
-import com.example.enight.dataBase.email.EmailDatabase
+import com.example.enight.dataBase.Enight_Database
 import com.example.enight.databinding.LoginBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         bindingLogin = DataBindingUtil.inflate(
             inflater, R.layout.login,
@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
         )
 
         val application = requireNotNull(this.activity).application
-        val dataSource = EmailDatabase.getInstance(application).emailDatabaseDao
+        val dataSource = Enight_Database.getInstance(application).emailDatabaseDao
         val viewModelFactory = LoginViewModelFactory(dataSource, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)

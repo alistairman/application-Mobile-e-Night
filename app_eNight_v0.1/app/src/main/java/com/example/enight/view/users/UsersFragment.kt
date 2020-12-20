@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.R
-import com.example.enight.dataBase.email.EmailDatabase
+import com.example.enight.view.users.UsersViewModelFactory
+import com.example.enight.dataBase.Enight_Database
 import com.example.enight.databinding.UsersBinding
 
 class UsersFragment : Fragment() {
@@ -19,26 +19,18 @@ class UsersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.users, container, false)
 
         val application = requireNotNull(this.activity).application
-        val dataSource = EmailDatabase.getInstance(application).emailDatabaseDao
-        val viewModelFactory = UsersViewModelFactory(dataSource, application)
+        val dataSource = Enight_Database.getInstance(application).profileDatabaseDao
+        val viewModelFactory = UsersViewModelFactory("",dataSource, application)
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(UsersViewModel::class.java)
         binding.usersViewModel = viewModel
-
-        val adapter = EmailAdapter()
-        binding.usersList.adapter = adapter
-
-        viewModel.emails.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.data = it
-            }
-        })
+        binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
     }

@@ -11,4 +11,9 @@
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/rules" />
 
+    <item
+        android:id="@+id/usersFragment"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="Profile" />
+
 </menu>

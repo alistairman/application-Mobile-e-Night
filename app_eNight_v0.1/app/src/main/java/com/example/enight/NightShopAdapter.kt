@@ -1,14 +1,12 @@
-package com.example.enight.view.users
+package com.example.enight
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enight.R
 import com.example.enight.dataBase.email.Email
 
-class EmailAdapter: RecyclerView.Adapter<EmailAdapter.ViewHolder>() {
+class NightShopAdapter: RecyclerView.Adapter<NightShopAdapter.ViewHolder>(){
 
     var data  = listOf<Email>()
         set(value) {
@@ -28,12 +26,12 @@ class EmailAdapter: RecyclerView.Adapter<EmailAdapter.ViewHolder>() {
     override fun getItemCount() = data.size
 
     class ViewHolder private constructor(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val mail: TextView = itemView.findViewById(R.id.Email_mail)
-        val time: TextView = itemView.findViewById(R.id.Email_time)
+        //val mail: TextView = itemView.findViewById(R.id.email_editText_profile)
+        //val time: TextView = itemView.findViewById(R.id)
 
         fun bind(item : Email){
-            mail.text = item.mail
-            time.text = item.time
+            //mail.text = item.mail
+            //time.text = item.time
         }
 
         companion object {
