@@ -3,17 +3,20 @@
 
     <item
         android:id="@+id/aboutFragment"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@android:drawable/ic_menu_help"
         android:title="@string/about_me" />
+
 
     <item
         android:id="@+id/rulesFragment"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="@string/rules" />
+        android:title="Rules"/>
 
     <item
-        android:id="@+id/usersFragment"
+        android:id="@+id/profileFragment"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="Profile" />
+        android:title="Profile"/>
+
+
 
 </menu>

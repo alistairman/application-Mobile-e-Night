@@ -1,11 +1,11 @@
-package com.example.enight.dataBase.users
+package com.example.enight.dataBase.profile
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName="profile")
-data class Profiles(
+data class Profile(
     /**
      * this variable represent the id of the data
      */

@@ -9,16 +9,11 @@
     <string name="prenom">Prenom : </string>
     <string name="about_me">About Me</string>
     <string name="quote_format">\"%s\"</string>
+    <string name="fragement_login_label">Login</string>
+    <string name="fragment_about_me_label">About Me</string>
+    <string name="profile">Profile</string>
+    <string name="profile_fragment_label">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="rules">Rules</string>
-    <string name="login_value">Login</string>
-    <string name="about_value">About Me</string>
-    <string name="users_value">Users</string>
-    <string name="rules_value">Rules</string>
-    <string name="category_label">Category</string>
-    <string name="email_user">Email Address :</string>
-    <string name="firstName_label_value">First Name :</string>
-    <string name="lastName_label_value">Last Name :</string>
-    <string name="update_profile_button">UpDate</string>
+    <string name="fragment_rules_label">Rules</string>
 </resources>

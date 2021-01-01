@@ -1,11 +1,10 @@
-package com.example.enight.view.about
+package com.example.enight
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.enight.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +34,7 @@ class RulesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.rules, container, false)
+        return inflater.inflate(R.layout.fragment_rules, container, false)
     }
 
     companion object {

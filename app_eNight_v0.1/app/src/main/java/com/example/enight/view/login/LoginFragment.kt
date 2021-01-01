@@ -14,12 +14,11 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.enight.R
-import com.example.enight.dataBase.Enight_Database
-import com.example.enight.databinding.LoginBinding
+import com.example.enight.dataBase.EnightDB
+import com.example.enight.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -30,7 +29,7 @@ class LoginFragment : Fragment() {
     /**
      * this variable represent the data binding of this fragment
      */
-    private lateinit var bindingLogin: LoginBinding
+    private lateinit var bindingLogin: FragmentLoginBinding
 
     /**
      * this variable represent the view of this fragment
@@ -46,15 +45,15 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
 
         bindingLogin = DataBindingUtil.inflate(
-            inflater, R.layout.login,
+            inflater, R.layout.fragment_login,
             container, false
         )
 
         val application = requireNotNull(this.activity).application
-        val dataSource = Enight_Database.getInstance(application).emailDatabaseDao
+        val dataSource = EnightDB.getInstance(application).emailDatabaseDao
         val viewModelFactory = LoginViewModelFactory(dataSource, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
@@ -74,6 +73,7 @@ class LoginFragment : Fragment() {
         viewModel.isValid.observe(viewLifecycleOwner, { ok ->
             if (ok) valided()
             else notValided()
+
         })
 
         setHasOptionsMenu(true)
@@ -90,8 +90,12 @@ class LoginFragment : Fragment() {
         Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
         bindingLogin.editEmail.setTextColor(BLACK)
         viewModel.getMail()
-        requireView().findNavController().navigate(R.id.action_loginFragment2_to_categoryFragment)
 
+        // to refresh UI with new data
+        bindingLogin.apply {
+            invalidateAll()
+        }
+        showCurrentMail()
     }
 
     /**

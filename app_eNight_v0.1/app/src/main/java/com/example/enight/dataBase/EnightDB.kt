@@ -6,14 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.enight.dataBase.email.Email
 import com.example.enight.dataBase.email.EmailDatabaseDao
-import com.example.enight.dataBase.users.ProfileDatabaseDao
-import com.example.enight.dataBase.users.Profiles
+import com.example.enight.dataBase.profile.Profile
+import com.example.enight.dataBase.profile.ProfileDatabaseDao
 
 /**
  * this class represent the connection to the database
  */
-@Database(entities = [Email::class,Profiles::class], version = 3, exportSchema = false)
-abstract class Enight_Database : RoomDatabase() {
+@Database(entities = [Email::class,Profile::class], version = 3, exportSchema = false)
+abstract class EnightDB : RoomDatabase() {
 
     /**
      * this variable represent the database
@@ -22,24 +22,22 @@ abstract class Enight_Database : RoomDatabase() {
 
     abstract val profileDatabaseDao : ProfileDatabaseDao
 
-    //abstract val categoryDatabaseDao : ProfileDatabaseDao
-
     /**
      * this companion make the connexion to database
      */
     companion object{
         @Volatile
-        private var INSTANCE : Enight_Database? = null
+        private var INSTANCE : EnightDB? = null
 
-        fun getInstance(context : Context) : Enight_Database {
+        fun getInstance(context : Context) : EnightDB{
             synchronized(this){
                 var instance = INSTANCE
 
                 if(instance==null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        Enight_Database::class.java,
-                        "Enight_dataBase"
+                        EnightDB::class.java,
+                        "E-NightDB"
                     ).fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }

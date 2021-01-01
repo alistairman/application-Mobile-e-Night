@@ -1,57 +1,53 @@
-package com.example.enight.dataBase.email
+package com.example.enight.dataBase.profile
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.enight.dataBase.email.Email
 
-/**
- * this class is the dao of the data base
- */
+
 @Dao
-interface EmailDatabaseDao {
-
+interface ProfileDatabaseDao {
     /**
      * this method insert a data into the database
      */
     @Insert
-    suspend fun insert(mail : Email)
+    suspend fun insert(profile : Profile)
 
     /**
      * this method update a data into the database
      */
     @Update
-    suspend fun update(mail: Email)
+    suspend fun update(profile: Profile)
 
     /**
      * this method get a specific data by id from the database
      */
-    @Query("Select * from login_mail where mailId = :key")
-    suspend fun get(key: Long) : Email?
+    @Query("Select * from profile where userId = :key")
+    suspend fun get(key: Long) : Profile?
 
     /**
      * this method get a specific data by value of mail from the database
      */
-    @Query("Select * from login_mail where log_mail like :key")
-    suspend fun getMail(key: String) : Email?
+    @Query("Select * from profile where email like :key")
+    suspend fun getProfile(key: String) : Profile?
 
     /**
      * this method delete all data into database
      */
-    @Query("delete from login_mail")
+    @Query("delete from profile")
     suspend fun clear()
 
     /**
      * this method get the last data from the database
      */
-    @Query("select * from login_mail order by mailId desc limit 1")
-    suspend fun getToMail(): Email?
+    @Query("select * from profile order by userId desc limit 1")
+    suspend fun getToProfile(): Profile?
 
     /**
      * this method get all data from database
      */
-    @Query("select * from login_mail order by mailId desc")
-    fun getAll(): LiveData<List<Email>>
+    @Query("select * from profile order by userId desc")
+    fun getAll(): LiveData<List<Profile>>
 }
