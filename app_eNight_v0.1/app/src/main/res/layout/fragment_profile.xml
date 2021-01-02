@@ -6,23 +6,100 @@
 
     <data>
         <variable
-            name="LoginViewModel"
-            type="com.example.enight.view.login.LoginViewModel" />
-        <variable
             name="ProfileViewModel"
             type="com.example.enight.view.profile.ProfileViewModel" />
     </data>
 
-    <TextView
-        android:layout_width="341dp"
-        android:layout_height="188dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/id_editText_email"
+            android:layout_width="221dp"
+            android:layout_height="36dp"
+            android:text="@{ProfileViewModel.currentProfile.mail}"
+            app:layout_constraintBottom_toTopOf="@+id/id_editText_nom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/id_label_email"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/id_editText_nom"
+            android:layout_width="221dp"
+            android:layout_height="36dp"
+            android:text="@{ProfileViewModel.currentProfile.lastName}"
+            app:layout_constraintBottom_toTopOf="@+id/id_editText_prenom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/id_label_nom"
+            app:layout_constraintTop_toBottomOf="@+id/id_editText_email" />
 
+        <TextView
+            android:id="@+id/id_editText_prenom"
+            android:layout_width="221dp"
+            android:layout_height="36dp"
+            android:text="@{ProfileViewModel.currentProfile.firstName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/id_label_prenom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.387" />
 
+        <TextView
+            android:id="@+id/id_label_email"
+            android:layout_width="79dp"
+            android:layout_height="36dp"
+            android:text="Email : "
+            app:layout_constraintBottom_toTopOf="@+id/id_label_nom"
+            app:layout_constraintEnd_toStartOf="@+id/id_editText_email"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/id_label_nom"
+            android:layout_width="79dp"
+            android:layout_height="36dp"
+            android:text="Nom : "
+            app:layout_constraintBottom_toTopOf="@+id/id_label_prenom"
+            app:layout_constraintEnd_toStartOf="@+id/id_editText_nom"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_label_email" />
+        <TextView
+            android:id="@+id/id_label_prenom"
+            android:layout_width="79dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="48dp"
+            android:text="Prenom : "
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintEnd_toStartOf="@+id/id_editText_prenom"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="328dp"
+            android:layout_height="235dp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_editText_prenom" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="183dp"
+            android:layout_height="43dp"
+            android:text="Ajouter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

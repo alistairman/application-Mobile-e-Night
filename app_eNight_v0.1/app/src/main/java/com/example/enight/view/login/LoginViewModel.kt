@@ -10,6 +10,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.enight.dataBase.email.Email
 import com.example.enight.dataBase.email.EmailDatabaseDao
+import com.example.enight.dataBase.profile.Profile
+import com.example.enight.dataBase.profile.ProfileDatabaseDao
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
@@ -18,6 +20,7 @@ import java.text.SimpleDateFormat
  */
 class LoginViewModel(
     private val database: EmailDatabaseDao,
+    private val database2: ProfileDatabaseDao,
     application: Application ) : AndroidViewModel(application) {
 
 
@@ -137,6 +140,8 @@ class LoginViewModel(
      */
     private suspend fun insert(mail: Email) {
         database.insert(mail)
+        val profile = Profile(0,mail.mail)
+        database2.insert(profile)
     }
 
     /**

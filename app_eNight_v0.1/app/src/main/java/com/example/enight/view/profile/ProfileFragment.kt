@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.R
+import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FragmentProfileBinding
+import com.example.enight.view.login.LoginViewModelFactory
 
 
 class ProfileFragment : Fragment() {
@@ -22,7 +24,11 @@ class ProfileFragment : Fragment() {
             inflater, R.layout.fragment_profile, container, false
         )
 
-        val viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+        val dataSource = EnightDB.getInstance(application).profileDatabaseDao
+        val viewModelFactory = ProfileViewModelFactory(dataSource, application)
+
+        val viewModel = ViewModelProvider(this,viewModelFactory).get(ProfileViewModel::class.java)
         binding.profileViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

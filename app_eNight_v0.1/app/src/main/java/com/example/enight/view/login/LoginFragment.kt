@@ -54,7 +54,8 @@ class LoginFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = EnightDB.getInstance(application).emailDatabaseDao
-        val viewModelFactory = LoginViewModelFactory(dataSource, application)
+        val dataSource2 = EnightDB.getInstance(application).profileDatabaseDao
+        val viewModelFactory = LoginViewModelFactory(dataSource,dataSource2, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
         bindingLogin.loginViewModel = viewModel
