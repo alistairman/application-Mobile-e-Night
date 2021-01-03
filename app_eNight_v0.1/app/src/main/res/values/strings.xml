@@ -16,4 +16,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_rules_label">Rules</string>
+    <string name="email_label">Email :</string>
+    <string name="nom_label">Nom :</string>
+    <string name="prenom_label">Prenom :</string>
+    <string name="ajouter_label_button">Ajouter</string>
+    <string name="name_of_user">name of user</string>
+    <string name="first_name_of_user">first name of user</string>
+    <string name="email_of_user">Email of user</string>
 </resources>

@@ -14,92 +14,136 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/id_editText_email"
-            android:layout_width="221dp"
-            android:layout_height="36dp"
-            android:text="@{ProfileViewModel.currentProfile.mail}"
-            app:layout_constraintBottom_toTopOf="@+id/id_editText_nom"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/formulaire_layout_id"
+            android:layout_width="444dp"
+            android:layout_height="247dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/button_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/id_label_email"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/id_editText_nom"
-            android:layout_width="221dp"
-            android:layout_height="36dp"
-            android:text="@{ProfileViewModel.currentProfile.lastName}"
-            app:layout_constraintBottom_toTopOf="@+id/id_editText_prenom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/id_label_nom"
-            app:layout_constraintTop_toBottomOf="@+id/id_editText_email" />
-
-        <TextView
-            android:id="@+id/id_editText_prenom"
-            android:layout_width="221dp"
-            android:layout_height="36dp"
-            android:text="@{ProfileViewModel.currentProfile.firstName}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/id_label_prenom"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.387" />
-
-        <TextView
-            android:id="@+id/id_label_email"
-            android:layout_width="79dp"
-            android:layout_height="36dp"
-            android:text="Email : "
-            app:layout_constraintBottom_toTopOf="@+id/id_label_nom"
-            app:layout_constraintEnd_toStartOf="@+id/id_editText_email"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/id_label_nom"
-            android:layout_width="79dp"
-            android:layout_height="36dp"
-            android:text="Nom : "
-            app:layout_constraintBottom_toTopOf="@+id/id_label_prenom"
-            app:layout_constraintEnd_toStartOf="@+id/id_editText_nom"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_label_email" />
-        <TextView
-            android:id="@+id/id_label_prenom"
-            android:layout_width="79dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="48dp"
-            android:text="Prenom : "
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-            app:layout_constraintEnd_toStartOf="@+id/id_editText_prenom"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/id_label_email"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/email_label"
+                app:layout_constraintBottom_toTopOf="@id/id_label_nom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.103"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/id_label_nom"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/nom_label"
+                app:layout_constraintBottom_toTopOf="@+id/id_label_prenom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.103"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_label_email" />
+
+
+            <TextView
+                android:id="@+id/id_label_prenom"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/prenom_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.103"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_label_nom" />
+
+            <EditText
+                android:id="@+id/id_editText_email"
+                android:layout_width="221dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/email_of_user"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:text="@{ProfileViewModel.currentProfile.mail}"
+                app:layout_constraintBottom_toTopOf="@id/id_editText_nom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.784"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/id_editText_nom"
+                android:layout_width="221dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/name_of_user"
+                android:inputType="text"
+                android:text="@{ProfileViewModel.currentProfile.lastName}"
+                app:layout_constraintBottom_toTopOf="@+id/id_label_prenom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.784"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_editText_email"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/id_editText_prenom"
+                android:layout_width="221dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Nom"
+                android:contentDescription="@string/first_name_of_user"
+                android:inputType="text"
+                android:text="@{ProfileViewModel.currentProfile.firstName}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.784"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_editText_nom"
+                app:layout_constraintVertical_bias="0.509"
+                tools:ignore="LabelFor" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="328dp"
-            android:layout_height="235dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_editText_prenom" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="183dp"
-            android:layout_height="43dp"
-            android:text="Ajouter"
+            android:id="@+id/profile_list_id"
+            android:layout_width="336dp"
+            android:layout_height="147dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="72dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/button_id" />
+
+        <Button
+            android:id="@+id/button_id"
+            android:layout_width="183dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="44dp"
+            android:text="@string/ajouter_label_button"
+            app:layout_constraintBottom_toTopOf="@+id/profile_list_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formulaire_layout_id" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
