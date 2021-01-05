@@ -24,7 +24,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/button_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -70,14 +70,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_label_nom" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/id_editText_email"
                 android:layout_width="221dp"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/email_of_user"
+                android:hint="@{ProfileViewModel.currentProfile.mail}"
+                android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
-                android:text="@{ProfileViewModel.currentProfile.mail}"
+                android:textAlignment="center"
+                android:text="@={ProfileViewModel.editEmail}"
                 app:layout_constraintBottom_toTopOf="@id/id_editText_nom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.784"
@@ -89,25 +91,28 @@
                 android:id="@+id/id_editText_nom"
                 android:layout_width="221dp"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/name_of_user"
+                android:importantForAutofill="no"
+                android:hint="@{ProfileViewModel.currentProfile.lastName}"
                 android:inputType="text"
-                android:text="@{ProfileViewModel.currentProfile.lastName}"
+                android:textAlignment="center"
+                android:text="@={ProfileViewModel.editName}"
                 app:layout_constraintBottom_toTopOf="@+id/id_label_prenom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.784"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_editText_email"
-                android:importantForAutofill="no"
                 tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/id_editText_prenom"
                 android:layout_width="221dp"
                 android:layout_height="wrap_content"
-                android:autofillHints="Nom"
-                android:contentDescription="@string/first_name_of_user"
+                android:autofillHints="Prenom"
+                android:hint="@{ProfileViewModel.currentProfile.firstName}"
+                android:imeOptions="actionDone"
                 android:inputType="text"
-                android:text="@{ProfileViewModel.currentProfile.firstName}"
+                android:textAlignment="center"
+                android:text="@={ProfileViewModel.editFirstName}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.784"
@@ -120,8 +125,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/profile_list_id"
-            android:layout_width="336dp"
-            android:layout_height="147dp"
+            android:layout_width="330dp"
+            android:layout_height="171dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
@@ -129,7 +134,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_id" />
 
@@ -140,6 +145,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="44dp"
             android:text="@string/ajouter_label_button"
+            android:onClick="@{() -> ProfileViewModel.ajouter()}"
             app:layout_constraintBottom_toTopOf="@+id/profile_list_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -13,14 +13,33 @@ class ProfileViewModel(
 
     val currentProfile =  MutableLiveData<Profile>()
 
-    val profiles : LiveData<List<Profile>>
+    val profiles : LiveData<List<Profile>> = database.getAll()
+
+    val editEmail = MutableLiveData<String>()
+
+    val editName = MutableLiveData<String>()
+
+    val editFirstName = MutableLiveData<String>()
 
     val allMail = ArrayList<String>()
 
+    private val _isValid = MutableLiveData<Boolean>()
+    val isValid :LiveData<Boolean>
+        get() = _isValid
+
     init {
-        profiles = database.getAll()
         initCurrentProfile()
-        //profiles = LiveData<List<Profile>>
+        initializeListMail()
+        editEmail.value = ""
+        editFirstName.value = ""
+        editName.value = ""
+    }
+
+
+    private fun initCurrentProfile(){
+        viewModelScope.launch {
+            currentProfile.value = database.getToProfile()
+        }
     }
 
     private fun initializeListMail(){
@@ -34,11 +53,41 @@ class ProfileViewModel(
         }
     }
 
-    private fun initCurrentProfile(){
-        viewModelScope.launch {
-            currentProfile.value = database.getToProfile()
+    fun ajouter(){
+        if(!editEmail.value.isNullOrEmpty()){
+            viewModelScope.launch {
+                val profileGot = database.getProfile(editEmail.value.toString())
+
+                if(profileGot != null){
+                    if(!editName.value.isNullOrEmpty()){
+                        insertName(profileGot,editName.value.toString())
+                    }
+                    if(!editFirstName.value.isNullOrEmpty()){
+                        insertFirstName(profileGot,editFirstName.value.toString())
+                    }
+                }
+                else{
+                    _isValid.value = false
+                }
+            }
         }
     }
+
+    fun insertName(profile:Profile,name:String){
+        viewModelScope.launch {
+            profile.lastName = name
+            database.update(profile)
+        }
+    }
+
+    fun insertFirstName(profile:Profile,name:String){
+        viewModelScope.launch {
+            profile.firstName = name
+            database.update(profile)
+        }
+    }
+
+
 
 
 }

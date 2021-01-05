@@ -22,11 +22,11 @@ data class Profile(
      * this variable represent the date when data is used
      */
     @ColumnInfo(name = "first_Name")
-    val firstName: String = "",
+    var firstName: String = "",
 
     /**
      * this variable represent the time when data is used
      */
     @ColumnInfo(name = "last_name")
-    val lastName : String = ""
+    var lastName : String = ""
 )

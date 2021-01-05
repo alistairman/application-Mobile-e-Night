@@ -20,6 +20,7 @@ class ProfileAdapter: RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val email: TextView = itemView.findViewById(R.id.email)
         val name: TextView = itemView.findViewById(R.id.name)
+        val firstName: TextView = itemView.findViewById(R.id.firstName)
     }
 
     override fun getItemCount() = data.size
@@ -29,7 +30,7 @@ class ProfileAdapter: RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
         val res = holder.itemView.context.resources
         holder.email.text = item.mail
         holder.name.text = item.lastName
-
+        holder.firstName.text = item.firstName
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
