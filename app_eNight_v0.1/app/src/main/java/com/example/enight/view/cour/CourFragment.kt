@@ -26,8 +26,8 @@ class CourFragment : Fragment() {
         val viewModelFactory = CourViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this,viewModelFactory).get(CourViewModel::class.java)
 
-        //binding.courViewModel = viewModel
-        //binding.lifecycleOwner = viewLifecycleOwner
+        binding.courViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         /**val adapter = ArrayAdapter(
         requireActivity(),
