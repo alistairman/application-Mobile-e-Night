@@ -1,0 +1,53 @@
+package com.example.enight.dataBase.cour
+
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+
+@Dao
+interface CourDatabaseDao {
+    /**
+     * this method insert a data into the database
+     */
+    @Insert
+    suspend fun insert(cour: Cour)
+
+    /**
+     * this method update a data into the database
+     */
+    @Update
+    suspend fun update(cour: Cour)
+
+    /**
+     * this method get a specific data by id from the database
+     */
+    @Query("Select * from Cour where etuNo = :key")
+    suspend fun get(key: Long) : Cour?
+
+    /**
+     * this method get a specific data by value of mail from the database
+     */
+    @Query("Select * from cour where cour like :key")
+    suspend fun getCour(key: String) : Cour?
+
+    /**
+     * this method delete all data into database
+     */
+    @Query("delete from cour")
+    suspend fun clear()
+
+    /**
+     * this method get the last data from the database
+     */
+    @Query("select * from cour order by etuNo desc limit 1")
+    suspend fun getToCour(): Cour?
+
+    /**
+     * this method get all data from database
+     */
+    @Query("select * from cour order by etuNo desc")
+    fun getAll(): LiveData<List<Cour>>
+
+}
