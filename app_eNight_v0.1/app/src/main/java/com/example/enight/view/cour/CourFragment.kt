@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.R
@@ -29,7 +31,7 @@ class CourFragment : Fragment() {
         binding.courViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        /**val adapter = ArrayAdapter(
+        val adapter = ArrayAdapter(
         requireActivity(),
         android.R.layout.select_dialog_item,
         viewModel.allCours
@@ -37,7 +39,7 @@ class CourFragment : Fragment() {
 
         val actv : AutoCompleteTextView = binding.editInputCourName
         actv.threshold = 1
-        actv.setAdapter(adapter)*/
+        actv.setAdapter(adapter)
 
         //val adapter2 = CourAdapter()
         //binding.recyclerViewCours.adapter = adapter2

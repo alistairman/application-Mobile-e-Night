@@ -59,6 +59,18 @@ class ProfileFragment : Fragment() {
             if (!ok) notValided()
         })
 
+        viewModel.isEditEmailFilled.observe(viewLifecycleOwner, {
+            if(!it) Toast.makeText(activity,"Email is Empty", Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.isEditNameFilled.observe(viewLifecycleOwner, {
+            if(!it) Toast.makeText(activity,"Last Name is Empty", Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.isEditFirstNameFilled.observe(viewLifecycleOwner, {
+            if(!it) Toast.makeText(activity,"First Name is Empty", Toast.LENGTH_LONG).show()
+        })
+
         return binding.root
     }
 

@@ -85,6 +85,7 @@
                 android:hint="5"
                 android:imeOptions="actionDone"
                 android:textAlignment="center"
+                android:text="@={CourViewModel.editNbCredit}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -130,7 +131,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_cours"
+            android:id="@+id/recyclerView_cour"
             android:layout_width="269dp"
             android:layout_height="202dp"
             app:layout_constraintBottom_toBottomOf="parent"

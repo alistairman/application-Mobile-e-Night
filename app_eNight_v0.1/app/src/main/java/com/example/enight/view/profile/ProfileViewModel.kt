@@ -16,10 +16,19 @@ class ProfileViewModel(
     val profiles : LiveData<List<Profile>> = database.getAll()
 
     val editEmail = MutableLiveData<String>()
+    private val _isEditEmailFilled = MutableLiveData<Boolean>()
+    val isEditEmailFilled : LiveData<Boolean>
+        get() = _isEditEmailFilled
 
     val editName = MutableLiveData<String>()
+    private val _isEditNameFilled = MutableLiveData<Boolean>()
+    val isEditNameFilled : LiveData<Boolean>
+        get() = _isEditNameFilled
 
     val editFirstName = MutableLiveData<String>()
+    private val _isEditFirstNameFilled = MutableLiveData<Boolean>()
+    val isEditFirstNameFilled : LiveData<Boolean>
+        get() = _isEditFirstNameFilled
 
     val allMail = ArrayList<String>()
 
@@ -61,15 +70,21 @@ class ProfileViewModel(
                 if(profileGot != null){
                     if(!editName.value.isNullOrEmpty()){
                         insertName(profileGot,editName.value.toString())
+                    }else{
+                        _isEditNameFilled.value = false
                     }
                     if(!editFirstName.value.isNullOrEmpty()){
                         insertFirstName(profileGot,editFirstName.value.toString())
+                    }else{
+                        _isEditFirstNameFilled.value = false
                     }
                 }
                 else{
                     _isValid.value = false
                 }
             }
+        }else{
+            _isEditEmailFilled.value = false
         }
     }
 
