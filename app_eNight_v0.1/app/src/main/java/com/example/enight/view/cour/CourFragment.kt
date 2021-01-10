@@ -34,20 +34,19 @@ class CourFragment : Fragment() {
         val adapter = ArrayAdapter(
         requireActivity(),
         android.R.layout.select_dialog_item,
-        viewModel.allCours
+        viewModel.allCour
         )
 
         val actv : AutoCompleteTextView = binding.editInputCourName
         actv.threshold = 1
         actv.setAdapter(adapter)
 
-        //val adapter2 = CourAdapter()
-        //binding.recyclerViewCours.adapter = adapter2
+        val adapter2 = CourAdapter()
+        binding.recyclerViewCour.adapter = adapter2
 
-
-        /**viewModel.cours.observe(viewLifecycleOwner, {
+        viewModel.cours.observe(viewLifecycleOwner, {
             it?.let { adapter2.data = it }
-        })*/
+        })
 
         return binding.root
     }

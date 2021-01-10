@@ -9,7 +9,13 @@
         android:id="@+id/loginFragment2"
         android:name="com.example.enight.view.login.LoginFragment"
         android:label="@string/fragement_login_label"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment2_to_courFragment"
+            app:destination="@id/courFragment"
+            app:popUpTo="@id/loginFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.enight.view.about.AboutFragment"
@@ -25,4 +31,9 @@
         android:name="com.example.enight.view.profile.ProfileFragment"
         android:label="@string/profile_fragment_label"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/courFragment"
+        android:name="com.example.enight.view.cour.CourFragment"
+        android:label="@string/Label_fragment_cour"
+        tools:layout="@layout/fragment_cour" />
 </navigation>

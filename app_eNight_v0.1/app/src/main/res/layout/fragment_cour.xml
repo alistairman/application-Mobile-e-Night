@@ -28,7 +28,7 @@
                 android:id="@+id/id_label_titre_formulaireAjout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ajouter un Cour au Cursus"
+                android:text="@string/ajouter_un_cour_au_cursus"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,8 +41,9 @@
                 android:layout_width="134dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="8dp"
-                android:text="Nombre de Credit"
+                android:text="@string/nombre_de_credit"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/edit_input_nbCredit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/label_input_cour_name"
@@ -53,8 +54,9 @@
                 android:layout_width="134dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="8dp"
-                android:text="Cour"
+                android:text="@string/cour"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/edit_input_Cour_name"
                 app:layout_constraintEnd_toStartOf="@+id/label_input_nbCredit"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,34 +66,36 @@
             <AutoCompleteTextView
                 android:id="@+id/edit_input_Cour_name"
                 android:layout_width="68dp"
-                android:layout_height="22dp"
-                android:layout_marginBottom="16dp"
-                android:hint="ALG3"
+                android:layout_height="wrap_content"
+                android:hint="@string/alg3"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:text="@={CourViewModel.editCourName}"
                 android:textAlignment="center"
-                android:text="@={CourViewModel.editCour}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/edit_input_nbCredit"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.433"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/label_input_cour_name"
-                app:layout_constraintVertical_bias="0.666" />
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/edit_input_nbCredit"
                 android:layout_width="68dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:hint="5"
+                android:layout_height="wrap_content"
+                android:hint="@string/_5"
                 android:imeOptions="actionDone"
-                android:textAlignment="center"
+                android:importantForAutofill="no"
+                android:inputType="text"
                 android:text="@={CourViewModel.editNbCredit}"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/edit_input_Cour_name"
+                app:layout_constraintHorizontal_bias="0.754"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/label_input_nbCredit"
-                app:layout_constraintVertical_bias="0.659" />
+                tools:ignore="LabelFor" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -101,7 +105,7 @@
             android:layout_width="345dp"
             android:layout_height="88dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView_cours"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView_cour"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,14 +116,14 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Vue" />
+                android:text="@string/vue" />
 
             <Button
                 android:id="@+id/id_button_ajouter_cour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ajouter"
+                android:text="@string/ajouter"
                 android:onClick="@{() -> CourViewModel.ajouter()}" />
 
             <Button
@@ -127,18 +131,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Go to Shop" />
+                android:text="@string/go_to_shop" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_cour"
-            android:layout_width="269dp"
-            android:layout_height="202dp"
+            android:layout_width="291dp"
+            android:layout_height="155dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout_button"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

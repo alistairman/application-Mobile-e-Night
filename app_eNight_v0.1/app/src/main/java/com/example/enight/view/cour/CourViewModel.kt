@@ -14,18 +14,34 @@ class CourViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
-    val editCour = MutableLiveData<String>()
+    val editCourName = MutableLiveData<String>()
 
     val editNbCredit = MutableLiveData<String>()
 
-    val allCours = ArrayList<String>()
+    val allCour = ArrayList<String>()
+
+    val cours = database.getAll()
 
     init {
         initializeListMail()
+        editCourName.value = ""
+        editNbCredit.value = ""
     }
 
     fun ajouter(){
+        var name:String = ""
+        var nbCredit:String = ""
 
+        if(!editCourName.value.isNullOrEmpty()){
+            name = editCourName.value.toString()
+        }
+        if(!editNbCredit.value.isNullOrEmpty()){
+            nbCredit = editNbCredit.value!!
+        }
+        if (!editCourName.value.isNullOrEmpty() && !editNbCredit.value.isNullOrEmpty()){
+            val cour = Cour(0,name,nbCredit.toLong())
+            insert(cour)
+        }
     }
 
     private fun initializeListMail(){
@@ -33,9 +49,15 @@ class CourViewModel(
             var index = 1L
             while(database.get(index) != null){
                 val mail = database.get(index)
-                allCours.add(mail!!.cour)
+                allCour.add(mail!!.cour)
                 index += 1
             }
+        }
+    }
+
+    fun insert(cour: Cour){
+        viewModelScope.launch {
+            database.insert(cour)
         }
     }
 }

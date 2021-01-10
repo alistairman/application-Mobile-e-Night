@@ -97,6 +97,7 @@ class LoginFragment : Fragment() {
             invalidateAll()
         }
         showCurrentMail()
+        findNavController().navigate(R.id.action_loginFragment2_to_courFragment)
     }
 
     /**

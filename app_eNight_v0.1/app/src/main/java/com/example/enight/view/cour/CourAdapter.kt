@@ -28,7 +28,7 @@ class CourAdapter: RecyclerView.Adapter<CourAdapter.ViewHolder>() {
         val item = data[position]
         //val res = holder.itemView.context.resources
         holder.cour.text = item.cour
-        holder.nbCredit.text = item.etuNo.toString()
+        holder.nbCredit.text = item.nbCredit.toString()
         holder.valided.text = item.valided.toString()
     }
 

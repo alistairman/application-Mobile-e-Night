@@ -27,7 +27,7 @@ class ProfileAdapter: RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        val res = holder.itemView.context.resources
+        //val res = holder.itemView.context.resources
         holder.email.text = item.mail
         holder.name.text = item.lastName
         holder.firstName.text = item.firstName

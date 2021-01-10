@@ -23,4 +23,13 @@
     <string name="name_of_user">name of user</string>
     <string name="first_name_of_user">first name of user</string>
     <string name="email_of_user">Email of user</string>
+    <string name="_5">5</string>
+    <string name="alg3">ALG3</string>
+    <string name="cour">Cour</string>
+    <string name="nombre_de_credit">Nombre de Credit</string>
+    <string name="ajouter_un_cour_au_cursus">Ajouter un Cour au Cursus</string>
+    <string name="vue">Vue</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="go_to_shop">Go to Shop</string>
+    <string name="Label_fragment_cour">Mes Cours</string>
 </resources>
