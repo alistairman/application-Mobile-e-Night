@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodTruksFragment"
-        android:name="com.example.enight.FoodTruksFragment"
+        android:name="com.example.enight.view.foodTrucks.FoodTruksFragment"
         android:label="@string/Food_Trucks_List_label"
         tools:layout="@layout/food_truks_fragment" />
 </navigation>

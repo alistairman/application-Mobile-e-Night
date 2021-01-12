@@ -6,6 +6,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private  const val BASE_URL = "https://opendata.brussels.be/api/records/1.0/search/"
@@ -19,10 +20,16 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+/**private val retrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create())
+    .baseUrl(BASE_URL)
+    .build()*/
+
 
 interface FoodApiService {
     @GET("?dataset=bxl_food_trucks")
-    //suspend fun getProperties(): Call<FoodTruck>
+    //@GET("?location=11,50.85388,4.23218")
+    //fun getProperties() : Call<List<FoodTruck>>
     fun getProperties() : Call<JsonObject>
 }
 

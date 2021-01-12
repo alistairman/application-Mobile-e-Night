@@ -2,22 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".FoodTruksFragment">
-
-    <data>
-        <variable
-            name="ViewModel"
-            type="com.example.enight.FoodTruksViewModel" />
-    </data>
+    tools:context=".view.foodTrucks.FoodTruksFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{ViewModel.foodTrucks}"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_foodtrucks"
+            android:layout_width="327dp"
+            android:layout_height="516dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
