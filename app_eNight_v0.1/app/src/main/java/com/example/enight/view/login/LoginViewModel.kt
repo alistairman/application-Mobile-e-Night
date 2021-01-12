@@ -87,7 +87,7 @@ class LoginViewModel(
      * and if the email is in valid format
      */
     fun onConnexion(){
-        _isValid.value = !emailText.value!!.isEmpty()
+        _isValid.value = emailText.value!!.isNotEmpty()
                 && Patterns.EMAIL_ADDRESS.matcher(emailText.value!!.trim()).matches()
     }
 

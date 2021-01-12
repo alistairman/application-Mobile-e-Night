@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="Credits" />
+                android:text="@string/credits" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="Reussis" />
+                android:text="@string/valid" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -92,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> CourViewModel.isCliked()}"
                 android:text="@string/go_to_shop" />
 
         </LinearLayout>

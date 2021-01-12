@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enight.R
-import com.example.enight.TextItemViewHolder
 import com.example.enight.dataBase.profile.Profile
 
 class ProfileAdapter: RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {

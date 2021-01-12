@@ -10,12 +10,12 @@
     <item
         android:id="@+id/rulesFragment"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="Rules"/>
+        android:title="@string/rules"/>
 
     <item
         android:id="@+id/profileFragment"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="Profile"/>
+        android:title="@string/profile"/>
 
 
 

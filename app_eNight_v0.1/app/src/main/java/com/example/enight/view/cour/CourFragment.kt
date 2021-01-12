@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FragmentCourBinding
@@ -46,6 +47,13 @@ class CourFragment : Fragment() {
 
         viewModel.cours.observe(viewLifecycleOwner, {
             it?.let { adapter2.data = it }
+        })
+
+        viewModel.isGoToShop.observe(viewLifecycleOwner,{
+            if(it) {
+                findNavController().navigate(R.id.action_courFragment_to_foodTruksFragment)
+                viewModel.done()
+            }
         })
 
         return binding.root

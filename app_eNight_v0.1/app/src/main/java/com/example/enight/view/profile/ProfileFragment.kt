@@ -1,8 +1,6 @@
 package com.example.enight.view.profile
 
 import android.os.Bundle
-import android.provider.ContactsContract
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +8,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
-import com.example.enight.dataBase.profile.Profile
 import com.example.enight.databinding.FragmentProfileBinding
-import com.example.enight.view.login.LoginViewModelFactory
 
 
 class ProfileFragment : Fragment() {

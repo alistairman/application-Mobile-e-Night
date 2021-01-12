@@ -91,11 +91,6 @@ class LoginFragment : Fragment() {
         Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
         bindingLogin.editEmail.setTextColor(BLACK)
         viewModel.getMail()
-
-        // to refresh UI with new data
-        bindingLogin.apply {
-            invalidateAll()
-        }
         showCurrentMail()
         findNavController().navigate(R.id.action_loginFragment2_to_courFragment)
     }

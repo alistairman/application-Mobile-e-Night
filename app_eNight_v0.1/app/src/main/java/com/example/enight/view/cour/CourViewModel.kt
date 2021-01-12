@@ -22,6 +22,10 @@ class CourViewModel(
 
     val cours = database.getAll()
 
+    private val _isGoToShop = MutableLiveData<Boolean>()
+    val isGoToShop : LiveData<Boolean>
+        get() = _isGoToShop
+
     init {
         initializeListMail()
         editCourName.value = ""
@@ -42,6 +46,14 @@ class CourViewModel(
             val cour = Cour(0,name,nbCredit.toLong())
             insert(cour)
         }
+    }
+
+    fun isCliked(){
+        _isGoToShop.value = true
+    }
+
+    fun done(){
+        _isGoToShop.value = false
     }
 
     private fun initializeListMail(){

@@ -88,14 +88,14 @@ class ProfileViewModel(
         }
     }
 
-    fun insertName(profile:Profile,name:String){
+    private fun insertName(profile:Profile, name:String){
         viewModelScope.launch {
             profile.lastName = name
             database.update(profile)
         }
     }
 
-    fun insertFirstName(profile:Profile,name:String){
+    private fun insertFirstName(profile:Profile, name:String){
         viewModelScope.launch {
             profile.firstName = name
             database.update(profile)

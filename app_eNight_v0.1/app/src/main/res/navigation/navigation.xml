@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
     app:startDestination="@id/loginFragment2">
 
     <fragment
@@ -35,5 +34,14 @@
         android:id="@+id/courFragment"
         android:name="com.example.enight.view.cour.CourFragment"
         android:label="@string/Label_fragment_cour"
-        tools:layout="@layout/fragment_cour" />
+        tools:layout="@layout/fragment_cour" >
+        <action
+            android:id="@+id/action_courFragment_to_foodTruksFragment"
+            app:destination="@id/foodTruksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodTruksFragment"
+        android:name="com.example.enight.FoodTruksFragment"
+        android:label="@string/Food_Trucks_List_label"
+        tools:layout="@layout/food_truks_fragment" />
 </navigation>

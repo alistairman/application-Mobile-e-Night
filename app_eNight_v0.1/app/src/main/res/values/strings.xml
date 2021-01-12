@@ -11,7 +11,6 @@
     <string name="quote_format">\"%s\"</string>
     <string name="fragement_login_label">Login</string>
     <string name="fragment_about_me_label">About Me</string>
-    <string name="profile">Profile</string>
     <string name="profile_fragment_label">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -20,9 +19,6 @@
     <string name="nom_label">Nom :</string>
     <string name="prenom_label">Prenom :</string>
     <string name="ajouter_label_button">Ajouter</string>
-    <string name="name_of_user">name of user</string>
-    <string name="first_name_of_user">first name of user</string>
-    <string name="email_of_user">Email of user</string>
     <string name="_5">5</string>
     <string name="alg3">ALG3</string>
     <string name="cour">Cour</string>
@@ -32,4 +28,9 @@
     <string name="ajouter">Ajouter</string>
     <string name="go_to_shop">Go to Shop</string>
     <string name="Label_fragment_cour">Mes Cours</string>
+    <string name="credits">Credits</string>
+    <string name="valid">Validé</string>
+    <string name="rules">Rules</string>
+    <string name="profile">Profile</string>
+    <string name="Food_Trucks_List_label">Food Trucks List</string>
 </resources>
