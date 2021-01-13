@@ -1,6 +1,5 @@
 package com.example.enight.view.foodTrucks
 
-//import com.example.enight.network.retrofit
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.enight.network.FoodApi
@@ -8,6 +7,7 @@ import com.example.enight.network.FoodTruck
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,11 +47,11 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
                             response: Response<JsonObject>
                         ) {
                             if(response.isSuccessful() && response.body()!=null){
-                                val user_array: JsonArray = response.body()!!.getAsJsonArray("records")
-                                for (value in user_array ){
+                             val user_array: JsonArray = response.body()!!.getAsJsonArray("records")
+                            _foodTrucks.value = " ${user_array.size()} Food Trucks trouvés "
+                            /**for (value in user_array ){
                                     makeFoodList(value)
-                                }
-                                _foodTrucks.value = " success ${user_array.size()} linges trouvé "
+                                }*/
                             }
                         }
 
@@ -62,6 +62,7 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
                 )
             }
             catch (e: Exception){
+
                 _foodTrucks.value = "Fail ${e.message}"
             }
         }

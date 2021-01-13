@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.foodTrucks.FoodTruksFragment">
 
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.enight.view.foodTrucks.FoodTruksViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,6 +20,18 @@
             android:layout_height="516dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Label_food_trucks_trouvé" />
+
+        <TextView
+            android:id="@+id/Label_food_trucks_trouvé"
+            android:layout_width="299dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/pas_encore_trouv"
+            android:text="@{ViewModel.foodTrucks}"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView_foodtrucks"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

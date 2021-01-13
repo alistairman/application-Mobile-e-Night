@@ -23,7 +23,7 @@ class FoodTruksFragment : Fragment() {
 
         val binding = FoodTruksFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        //binding.viewModel = viewModel
+        binding.viewModel = viewModel
 
         val adapter2 = FoodTrucksAdapter()
 
