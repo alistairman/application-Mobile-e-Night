@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -46,8 +47,8 @@ class CourFragment : Fragment() {
         val adapter2 = CourAdapter()
         binding.recyclerViewCour.adapter = adapter2
 
-        viewModel.cours.observe(viewLifecycleOwner, {
-            it?.let { adapter2.data = it }
+        viewModel.cours.observe(viewLifecycleOwner, Observer {
+            it?.let { adapter2.submitList(it) }
         })
 
         viewModel.isGoToShop.observe(viewLifecycleOwner,{
@@ -57,9 +58,35 @@ class CourFragment : Fragment() {
             }
         })
 
-        //val manager = GridLayoutManager(activity,3)
-        //binding.recyclerViewCour.layoutManager = manager
+        val manager = GridLayoutManager(activity,3)
+        binding.recyclerViewCour.layoutManager = manager
 
         return binding.root
     }
 }
+/**
+<TextView
+android:id="@+id/nbCredit"
+android:layout_width="101dp"
+android:layout_height="18dp"
+android:textAlignment="center"
+app:courNbCreditTextview="@{cour}"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toStartOf="@+id/valided"
+app:layout_constraintHorizontal_bias="0.5"
+app:layout_constraintStart_toEndOf="@+id/cour_name"
+app:layout_constraintTop_toTopOf="parent"
+tools:text="Excellent!!!" />
+
+<TextView
+android:id="@+id/valided"
+android:layout_width="101dp"
+android:layout_height="18dp"
+android:textAlignment="center"
+app:courValidedTextview="@{cour}"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.5"
+app:layout_constraintStart_toEndOf="@+id/nbCredit"
+app:layout_constraintTop_toTopOf="parent"
+tools:text="Excellent!!!" />*/

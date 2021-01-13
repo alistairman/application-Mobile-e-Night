@@ -58,8 +58,6 @@ class ProfileFragment : Fragment() {
             }
         })
 
-
-
         viewModel.isValid.observe(viewLifecycleOwner, { ok ->
             if (!ok) notValided()
         })

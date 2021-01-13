@@ -72,4 +72,10 @@ class CourViewModel(
             database.insert(cour)
         }
     }
+
+    fun clear(){
+        viewModelScope.launch {
+            database.clear()
+        }
+    }
 }
