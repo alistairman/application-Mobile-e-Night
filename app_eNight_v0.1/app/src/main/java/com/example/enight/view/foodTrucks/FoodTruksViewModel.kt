@@ -20,7 +20,11 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
     val foodTrucks : LiveData<String>
         get() = _foodTrucks
 
-    //val foodTrucksList: LiveData<List<FoodTruck>>
+    private val _foodTrucksList = MutableLiveData<List<FoodTruck>>()
+    val foodTrucksList: LiveData<List<FoodTruck>>
+        get() = _foodTrucksList
+
+    var list = ArrayList<FoodTruck>()
 
     init {
         getFoodTrucks()
@@ -49,9 +53,10 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
                             if(response.isSuccessful() && response.body()!=null){
                              val user_array: JsonArray = response.body()!!.getAsJsonArray("records")
                             _foodTrucks.value = " ${user_array.size()} Food Trucks trouvés "
-                            /**for (value in user_array ){
+                            for (value in user_array ){
                                     makeFoodList(value)
-                                }*/
+                                }
+                                _foodTrucksList.value = list
                             }
                         }
 
@@ -73,6 +78,6 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
         val geometryAtl = value.asJsonObject.get("geometry").asJsonObject.get("coordinates").asJsonArray[0]
         val geometryLog = value.asJsonObject.get("geometry").asJsonObject.get("coordinates").asJsonArray[1]
         val newFood = FoodTruck(location.toString(),geometryAtl.asInt,geometryLog.asInt)
-        //foodTrucksList.add(newFood)
+        list.add(newFood)
     }
 }

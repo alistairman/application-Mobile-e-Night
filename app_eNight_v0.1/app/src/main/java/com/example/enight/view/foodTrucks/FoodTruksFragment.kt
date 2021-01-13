@@ -26,13 +26,14 @@ class FoodTruksFragment : Fragment() {
         binding.viewModel = viewModel
 
         val adapter2 = FoodTrucksAdapter()
+        binding.recyclerViewFoodtrucks.adapter = adapter2
 
-        /**viewModel.foodTrucks.observe(viewLifecycleOwner,{
+        viewModel.foodTrucksList.observe(viewLifecycleOwner,{
             it?.let {
                 adapter2.data = it
             }
-        })*/
-        binding.recyclerViewFoodtrucks.adapter = adapter2
+        })
+
 
 
         return binding.root
