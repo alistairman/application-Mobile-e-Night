@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enight.R
+import com.example.enight.cache.FoodTruckModel
 import com.example.enight.dataBase.profile.Profile
 import com.example.enight.network.FoodTruck
 
 class FoodTrucksAdapter:RecyclerView.Adapter<FoodTrucksAdapter.ViewHolder>(){
 
-    var data = listOf<FoodTruck>()
+    var data = listOf<FoodTruckModel>()
         set(value) {
             field = value
             notifyDataSetChanged()

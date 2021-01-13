@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FragmentCourBinding
@@ -55,6 +56,9 @@ class CourFragment : Fragment() {
                 viewModel.done()
             }
         })
+
+        //val manager = GridLayoutManager(activity,3)
+        //binding.recyclerViewCour.layoutManager = manager
 
         return binding.root
     }

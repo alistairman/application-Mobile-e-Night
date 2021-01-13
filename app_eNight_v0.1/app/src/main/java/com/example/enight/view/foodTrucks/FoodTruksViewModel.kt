@@ -2,6 +2,8 @@ package com.example.enight.view.foodTrucks
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.enight.cache.Repository
+import com.example.enight.cache.getDatabase
 import com.example.enight.network.FoodApi
 import com.example.enight.network.FoodTruck
 import com.google.gson.JsonArray
@@ -12,6 +14,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 
 class FoodTruksViewModel(application: Application) : AndroidViewModel(application) {
@@ -26,9 +29,27 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
 
     var list = ArrayList<FoodTruck>()
 
+    private val repository = Repository(getDatabase(application))
+
+    val playlist = repository.foodTruck
+
+
     init {
-        getFoodTrucks()
-        //refreshDataFromRepository()
+        //getFoodTrucks()
+        refreshDataFromRepository()
+    }
+
+    private fun refreshDataFromRepository() {
+        viewModelScope.launch {
+            try {
+                repository.refreshFoodTruck()
+
+            } catch (networkError: IOException) {
+                // Show a Toast error message and hide the progress bar.
+                if(playlist.value.isNullOrEmpty())
+                    _foodTrucks.value = "error avec ${networkError.message}"
+            }
+        }
     }
 
     /**private fun refreshDataFromNetwork() = viewModelScope.launch {
@@ -40,7 +61,7 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }*/
 
-   private fun getFoodTrucks(){
+   /**private fun getFoodTrucks(){
         viewModelScope.launch {
             try {
                 val result = FoodApi.retrofitService.getProperties()
@@ -71,7 +92,7 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
                 _foodTrucks.value = "Fail ${e.message}"
             }
         }
-    }
+    }*/
 
     private fun makeFoodList(value : JsonElement){
         val location = value.asJsonObject.get("fields").asJsonObject.get("emplacement")

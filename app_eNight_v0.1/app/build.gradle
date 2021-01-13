@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def room_version2 = "2.1.0-alpha06"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -64,5 +66,8 @@ dependencies {
 
     // Adapter
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    implementation "androidx.room:room-runtime:$room_version2"
+    kapt "androidx.room:room-compiler:$room_version2"
 }
 
