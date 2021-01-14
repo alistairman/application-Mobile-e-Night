@@ -7,6 +7,9 @@
         <variable
             name="foodTruck"
             type="com.example.enight.dataBase.foodTruck.FoodTruck" />
+        <variable
+            name="clickListener"
+            type="com.example.enight.view.foodTrucks.FoodTruckListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +29,7 @@
             android:paddingBottom="1dp"
             android:textAlignment="center"
             android:textSize="18sp"
+            android:onClick="@{() -> clickListener.onClick(foodTruck)}"
             app:foodTruckNameTextView="@{foodTruck}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

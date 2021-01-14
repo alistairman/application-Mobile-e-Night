@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FoodTrucksFragmentBinding
 
@@ -41,7 +42,9 @@ class FoodTruckFragment : Fragment() {
         /**
          * this part create and set the adapter of recycle view
          */
-        val adapterRecycleView = FoodTrucksAdapter()
+        val adapterRecycleView = FoodTrucksAdapter(FoodTruckListener { foodTruckLocation ->
+            Toast.makeText(context, foodTruckLocation , Toast.LENGTH_LONG).show()
+        })
         binding.recyclerViewFoodtrucks.adapter = adapterRecycleView
 
         /**

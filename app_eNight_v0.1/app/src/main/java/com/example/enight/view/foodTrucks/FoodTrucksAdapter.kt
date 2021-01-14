@@ -11,7 +11,7 @@ import com.example.enight.databinding.ListItemFoodtrucksBinding
 /**
  * this class is the adapter of the food truck fragment to show it in view
  */
-class FoodTrucksAdapter: ListAdapter<FoodTruck, FoodTrucksAdapter.ViewHolder>(
+class FoodTrucksAdapter(val clickListener: FoodTruckListener): ListAdapter<FoodTruck, FoodTrucksAdapter.ViewHolder>(
     FoodTruckDiffCallback()){
 
 
@@ -24,8 +24,9 @@ class FoodTrucksAdapter: ListAdapter<FoodTruck, FoodTrucksAdapter.ViewHolder>(
         /**
          * this method make the link between the data and correct object in the view
          */
-        fun bind(item: FoodTruck){
+        fun bind(item: FoodTruck, clickListener: FoodTruckListener){
             binding.foodTruck = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -46,7 +47,7 @@ class FoodTrucksAdapter: ListAdapter<FoodTruck, FoodTrucksAdapter.ViewHolder>(
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     /**
@@ -75,4 +76,9 @@ class FoodTruckDiffCallback : DiffUtil.ItemCallback<FoodTruck>() {
     override fun areContentsTheSame(oldItem: FoodTruck, newItem: FoodTruck): Boolean {
         return oldItem==newItem
     }
+}
+
+class FoodTruckListener(val clickListener: (location: String) -> Unit) {
+    fun onClick(foodTruck: FoodTruck) = clickListener(foodTruck.location)
+
 }
