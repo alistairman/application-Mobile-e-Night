@@ -27,8 +27,8 @@ fun TextView.courNameText(item: Cour) {
 }
 
 @BindingAdapter("foodTruckNameTextView")
-fun TextView.foodTruckNameText(item: FoodTruck) {
-    text = item.location
+fun TextView.foodTruckNameText(item: FoodTruck?) {
+    item?.let { text = item.location }
 }
 
 /**@BindingAdapter("courNbCreditTextView")

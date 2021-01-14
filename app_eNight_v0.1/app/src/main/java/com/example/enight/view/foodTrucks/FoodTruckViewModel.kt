@@ -39,6 +39,11 @@ class FoodTruckViewModel(
      */
     var foodTruckList = database.getAll()
 
+    //val _navigateToMap = MutableLiveData<String>()
+
+    private val _findFoodTruck = MutableLiveData<String>()
+    val findFoodTruck
+        get() = _findFoodTruck
 
     /**
      * this method initialize the view model by calling get Food Trucks method
@@ -100,4 +105,13 @@ class FoodTruckViewModel(
             database.insert(newFood)
         }
     }
+
+    fun onFoodTruckClicked(foodTruckLocation: String) {
+        _findFoodTruck.value = foodTruckLocation
+    }
+
+    fun onMapNavigated() {
+        _findFoodTruck.value = null
+    }
 }
+
