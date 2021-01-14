@@ -9,30 +9,47 @@ import com.example.enight.dataBase.cour.Cour
 import com.example.enight.dataBase.cour.CourDatabaseDao
 import kotlinx.coroutines.launch
 
+/**
+ * this class is the view model of the course fragment
+ */
 class CourViewModel(
     private val database: CourDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
 
+    /**
+     * this is the edit text of the name of the course in the view
+     */
     val editCourName = MutableLiveData<String>()
 
+    /**
+     * this is the edit text of number of ECTS of the course in the view
+     */
     val editNbCredit = MutableLiveData<String>()
 
-    val allCour = ArrayList<String>()
+    /**
+     * this is the list of courses from database used to set the recycle view
+     */
+    val coursesList = database.getAll()
 
-    val cours = database.getAll()
-
+    /**
+     * this variable check if the go to shop button is clicked
+     */
     private val _isGoToShop = MutableLiveData<Boolean>()
     val isGoToShop : LiveData<Boolean>
         get() = _isGoToShop
 
+
     init {
-        initializeListMail()
         editCourName.value = ""
         editNbCredit.value = ""
     }
 
-    fun ajouter(){
+    /**
+     * this method add a new course into the database
+     * get value from course name edit text and number of ECTS edit text
+     */
+    fun addCourse(){
         var name:String = ""
         var nbCredit:String = ""
 
@@ -43,36 +60,37 @@ class CourViewModel(
             nbCredit = editNbCredit.value!!
         }
         if (!editCourName.value.isNullOrEmpty() && !editNbCredit.value.isNullOrEmpty()){
-            val cour = Cour(0,name,nbCredit.toLong())
+            val cour = Cour(name,nbCredit.toLong())
             insert(cour)
         }
     }
 
-    fun isCliked(){
+    /**
+     * this method change the value of the variable isGoToShop if the button is clicked
+     */
+    fun isGoToShopClicked(){
         _isGoToShop.value = true
     }
 
+    /**
+     * this method reset the value if after navigate to the FoodTruck fragment
+     */
     fun done(){
         _isGoToShop.value = false
     }
 
-    private fun initializeListMail(){
-        viewModelScope.launch {
-            var index = 1L
-            while(database.get(index) != null){
-                val mail = database.get(index)
-                allCour.add(mail!!.cour)
-                index += 1
-            }
-        }
-    }
-
+    /**
+     * this method insert the new course into the database
+     */
     fun insert(cour: Cour){
         viewModelScope.launch {
             database.insert(cour)
         }
     }
 
+    /**
+     * this method clear the courses table at the end of the school year
+     */
     fun clear(){
         viewModelScope.launch {
             database.clear()

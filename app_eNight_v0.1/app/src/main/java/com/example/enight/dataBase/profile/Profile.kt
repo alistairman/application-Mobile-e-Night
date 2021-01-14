@@ -4,6 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * this table is the profile of users
+ */
 @Entity(tableName="profile")
 data class Profile(
     /**
@@ -13,19 +16,19 @@ data class Profile(
     var userId : Long = 0L,
 
     /**
-     * this variable represent the mail of data
+     * this variable represent the email of user
      */
     @ColumnInfo(name = "email")
     var mail: String = "",
 
     /**
-     * this variable represent the date when data is used
+     * this is the first name of the user
      */
     @ColumnInfo(name = "first_Name")
     var firstName: String = "",
 
     /**
-     * this variable represent the time when data is used
+     * this is the last name of the user
      */
     @ColumnInfo(name = "last_name")
     var lastName : String = ""

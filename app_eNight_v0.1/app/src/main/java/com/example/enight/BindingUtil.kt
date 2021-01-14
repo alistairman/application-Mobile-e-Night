@@ -22,12 +22,12 @@ fun TextView.profileLastnameText(item: Profile) {
 
 @BindingAdapter("courNameTextview")
 fun TextView.courNameText(item: Cour) {
-    text = item.cour
+    text = item.courId
 }
 
 @BindingAdapter("courNbCreditTextview")
 fun TextView.courNbCreditText(item: Cour) {
-    text = item.nbCredit.toString()
+    text = item.nbCredit.toString()+ " ECTS"
 }
 
 @BindingAdapter("courValidedTextview")

@@ -16,11 +16,11 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 /**
- * this class represent the data of the view of user interface
+ * this is the viewmodel part of MVVM of user interface
  */
 class LoginViewModel(
     private val database: EmailDatabaseDao,
-    private val database2: ProfileDatabaseDao,
+    private val databaseProfile: ProfileDatabaseDao,
     application: Application ) : AndroidViewModel(application) {
 
 
@@ -29,7 +29,6 @@ class LoginViewModel(
      */
     var currentLog = MutableLiveData<Email?>()
 
-    //private val emails = database.getAll()
 
     /**
      * this variable is the array of the all mail from the database
@@ -37,16 +36,16 @@ class LoginViewModel(
     val allMail = ArrayList<String>()
 
     /**
-     * this variable get the value from the editText
+     * this variable get the value from the editText of Login
      */
     val emailText = MutableLiveData<String>()
 
     /**
      * this variable get the true if the email is valided
      */
-    private val _isValid = MutableLiveData<Boolean>()
-         val isValid :LiveData<Boolean>
-        get() = _isValid
+    private val _isEmailValid = MutableLiveData<Boolean>()
+         val isEmailValid :LiveData<Boolean>
+        get() = _isEmailValid
 
     /**
      * this method initialize the current mail logged
@@ -87,7 +86,7 @@ class LoginViewModel(
      * and if the email is in valid format
      */
     fun onConnexion(){
-        _isValid.value = emailText.value!!.isNotEmpty()
+        _isEmailValid.value = emailText.value!!.isNotEmpty()
                 && Patterns.EMAIL_ADDRESS.matcher(emailText.value!!.trim()).matches()
     }
 
@@ -115,6 +114,8 @@ class LoginViewModel(
         mail.time = SimpleDateFormat("HH:mm:ss").format(time).toString()
         viewModelScope.launch {
             update(mail)
+        }
+        viewModelScope.launch {
             currentLog.value = database.getMail(mail.mail)
         }
     }
@@ -129,8 +130,15 @@ class LoginViewModel(
         val dateString = SimpleDateFormat("EEE, MMM dd , ''yy").format(time).toString()
         val timeString = SimpleDateFormat("HH:mm:ss").format(time).toString()
         val mail = Email(0,value,dateString,timeString)
+        val profile = Profile(0,mail.mail)
+
         viewModelScope.launch {
             insert(mail)
+        }
+        viewModelScope.launch {
+            insertProfile(profile)
+        }
+        viewModelScope.launch {
             initializeCurrentLog()
         }
     }
@@ -140,8 +148,6 @@ class LoginViewModel(
      */
     private suspend fun insert(mail: Email) {
         database.insert(mail)
-        val profile = Profile(0,mail.mail)
-        database2.insert(profile)
     }
 
     /**
@@ -150,4 +156,13 @@ class LoginViewModel(
     private suspend fun update(mail: Email) {
         database.update(mail)
     }
+
+    /**
+     * this method insert a new profile with the new email given into the profile table
+     */
+    private suspend fun insertProfile(mail: Profile) {
+        databaseProfile.insert(mail)
+    }
+
+
 }

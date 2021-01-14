@@ -6,44 +6,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import com.example.enight.cache.FoodTruckModel
 import com.example.enight.databinding.FoodTruksFragmentBinding
-import com.example.enight.view.profile.ProfileAdapter
 
+/**
+ * this fragement represent some food truck in town of Brussels
+ */
 class FoodTruksFragment : Fragment() {
 
 
+    /**
+     * this is the view model of this fragment
+     * but the view model is create at the first time it'll be used
+     */
     private val viewModel: FoodTruksViewModel by lazy {
         ViewModelProvider(this).get(FoodTruksViewModel::class.java)
     }
 
+    /**
+     * this method create and set this fragment
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        /**
+         * this part create and set the data binding and the viewmodel with binding part of view
+         */
         val binding = FoodTruksFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter2 = FoodTrucksAdapter()
-        binding.recyclerViewFoodtrucks.adapter = adapter2
+        /**
+         * this part create and set the adapter of recycle view
+         */
+        val adapterRecycleView = FoodTrucksAdapter()
+        binding.recyclerViewFoodtrucks.adapter = adapterRecycleView
 
-        /**viewModel.foodTrucksList.observe(viewLifecycleOwner,{
+        /**
+         * this part set the recycle view with data from the view model
+         */
+        viewModel.foodTrucksList.observe(viewLifecycleOwner,{
             it?.let {
-                adapter2.data = it
-            }
-        })*/
-        viewModel.playlist.observe(viewLifecycleOwner, Observer<List<FoodTruckModel>>{foodTruck ->
-            foodTruck.apply {
-                adapter2.data = foodTruck
+                adapterRecycleView.data = it
             }
         })
-
-
-
         return binding.root
     }
-
 }

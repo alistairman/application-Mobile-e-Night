@@ -5,6 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.dataBase.profile.ProfileDatabaseDao
 
+/**
+ * this is the view model factory
+ * this class config and create the view model of the profile fragment
+ */
 class ProfileViewModelFactory(
     private val database : ProfileDatabaseDao,
     private val application: Application

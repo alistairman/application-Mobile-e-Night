@@ -7,7 +7,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 /**
- * this class is the dao of the data base
+ * this class is the access to login table
  */
 @Dao
 interface EmailDatabaseDao {
@@ -31,7 +31,7 @@ interface EmailDatabaseDao {
     suspend fun get(key: Long) : Email?
 
     /**
-     * this method get a specific data by value of mail from the database
+     * this method get a specific data using email address from the database
      */
     @Query("Select * from login_mail where log_mail like :key")
     suspend fun getMail(key: String) : Email?

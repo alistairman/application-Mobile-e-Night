@@ -12,22 +12,28 @@ import com.example.enight.dataBase.profile.Profile
 import com.example.enight.dataBase.profile.ProfileDatabaseDao
 
 /**
- * this class represent the connection to the database
+ * this class represent the database of the app with different tables
  */
-@Database(entities = [Email::class,Profile::class,Cour::class], version = 4, exportSchema = false)
+@Database(entities = [Email::class,Profile::class,Cour::class], version = 6, exportSchema = false)
 abstract class EnightDB : RoomDatabase() {
 
     /**
-     * this variable represent the database
+     * this variable is used to access to login table
      */
     abstract val emailDatabaseDao : EmailDatabaseDao
 
+    /**
+     * this variable is used to access to profile table
+     */
     abstract val profileDatabaseDao : ProfileDatabaseDao
 
+    /**
+     * this variable is used to access to courses table
+     */
     abstract val courDatabaseDao : CourDatabaseDao
 
     /**
-     * this companion make the connexion to database
+     * this companion create and make the connexion to database
      */
     companion object{
         @Volatile

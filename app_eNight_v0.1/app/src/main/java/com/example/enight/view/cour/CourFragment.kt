@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,41 +14,58 @@ import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FragmentCourBinding
 
+/**
+ * this class is the course fragment to represent diff course of this school year
+ */
 class CourFragment : Fragment() {
+
+    /**
+     * this method create and set the fragment
+     * set the view model, set the adapter
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        /**
+         * this part create the data binding of the fragment
+         */
         val binding = DataBindingUtil.inflate<FragmentCourBinding>(
             inflater,R.layout.fragment_cour,
             container,false)
 
+        /**
+         * this part create the factory view model
+         * create view model by using factory with arguments
+         */
         val application = requireNotNull(this.activity).application
         val dataSource = EnightDB.getInstance(application).courDatabaseDao
         val viewModelFactory = CourViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this,viewModelFactory).get(CourViewModel::class.java)
 
+        /**
+         * this part set view model with data binding
+         */
         binding.courViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val adapter = ArrayAdapter(
-        requireActivity(),
-        android.R.layout.select_dialog_item,
-        viewModel.allCour
-        )
+        /**
+         * this part create adapter for the recycle view
+         */
+        val adapter = CourAdapter()
+        binding.recyclerViewCour.adapter = adapter
 
-        val actv : AutoCompleteTextView = binding.editInputCourName
-        actv.threshold = 1
-        actv.setAdapter(adapter)
-
-        val adapter2 = CourAdapter()
-        binding.recyclerViewCour.adapter = adapter2
-
-        viewModel.cours.observe(viewLifecycleOwner, Observer {
-            it?.let { adapter2.submitList(it) }
+        /**
+         * this part set the recycle view with data from view model
+         */
+        viewModel.coursesList.observe(viewLifecycleOwner, Observer {
+            it?.let { adapter.submitList(it) }
         })
 
+        /**
+         * this part check if the go to shop button is clicked then navigate to another fragment
+         */
         viewModel.isGoToShop.observe(viewLifecycleOwner,{
             if(it) {
                 findNavController().navigate(R.id.action_courFragment_to_foodTruksFragment)
@@ -58,6 +73,9 @@ class CourFragment : Fragment() {
             }
         })
 
+        /**
+         * this part create a new manager of the recycle view with specific design
+         */
         val manager = GridLayoutManager(activity,3)
         binding.recyclerViewCour.layoutManager = manager
 

@@ -1,6 +1,5 @@
 package com.example.enight.network
 
-import com.example.enight.cache.NetworkContainer
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -18,9 +17,7 @@ private val retrofit = Retrofit.Builder()
 interface FoodApiService {
     @GET("?dataset=bxl_food_trucks")
     fun getProperties() : Call<JsonObject>
-    //suspend fun getProperties() : NetworkContainer
 }
-
 
 object FoodApi {
     val retrofitService : FoodApiService by lazy {

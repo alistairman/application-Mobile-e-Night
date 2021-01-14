@@ -6,7 +6,9 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 
-
+/**
+ * this is the access to the profile table
+ */
 @Dao
 interface ProfileDatabaseDao {
     /**
@@ -28,7 +30,7 @@ interface ProfileDatabaseDao {
     suspend fun get(key: Long) : Profile?
 
     /**
-     * this method get a specific data by value of mail from the database
+     * this method get a specific data using email address from the database
      */
     @Query("Select * from profile where email like :key")
     suspend fun getProfile(key: String) : Profile?

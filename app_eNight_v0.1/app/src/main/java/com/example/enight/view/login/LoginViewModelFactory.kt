@@ -7,18 +7,18 @@ import com.example.enight.dataBase.email.EmailDatabaseDao
 import com.example.enight.dataBase.profile.ProfileDatabaseDao
 
 /**
- * this class represent the factory of the fragment
+ * this class represent the factory of the fragment to config viewmodel
  */
 class LoginViewModelFactory(
     private val database: EmailDatabaseDao,
-    private val database2: ProfileDatabaseDao,
+    private val databaseProfile: ProfileDatabaseDao,
     private val application: Application
 ): ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(database,database2, application ) as T
+            return LoginViewModel(database,databaseProfile, application ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

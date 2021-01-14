@@ -27,12 +27,12 @@ import com.google.android.material.snackbar.Snackbar
 class LoginFragment : Fragment() {
 
     /**
-     * this variable represent the data binding of this fragment
+     * this is the data binding of this fragment
      */
-    private lateinit var bindingLogin: FragmentLoginBinding
+    private lateinit var binding : FragmentLoginBinding
 
     /**
-     * this variable represent the view of this fragment
+     * this is the viewmodel for MVVM  architecture of this fragment
      */
     private lateinit var viewModel: LoginViewModel
 
@@ -47,38 +47,48 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        bindingLogin = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login,
             container, false
         )
 
+        /**
+         * this part is to create viewmodel with specific arguments using viewmodel factory
+         */
         val application = requireNotNull(this.activity).application
         val dataSource = EnightDB.getInstance(application).emailDatabaseDao
-        val dataSource2 = EnightDB.getInstance(application).profileDatabaseDao
-        val viewModelFactory = LoginViewModelFactory(dataSource,dataSource2, application)
+        val dataSourceProfile = EnightDB.getInstance(application).profileDatabaseDao
+        val viewModelFactory = LoginViewModelFactory(dataSource,dataSourceProfile, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
-        bindingLogin.loginViewModel = viewModel
-        bindingLogin.lifecycleOwner = viewLifecycleOwner
+        binding.loginViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        val adapter = ArrayAdapter(
+        /**
+         *this part is to create an adapter used to auto complete the edit text of the login view
+         */
+        val adapterAuto = ArrayAdapter(
             requireActivity(),
             android.R.layout.select_dialog_item,
-            viewModel.allMail
-        )
+            viewModel.allMail)
 
-        val actv : AutoCompleteTextView = bindingLogin.editEmail
+        val actv : AutoCompleteTextView = binding.editTextLoginEmail
         actv.threshold = 1
-        actv.setAdapter(adapter)
+        actv.setAdapter(adapterAuto)
 
-        viewModel.isValid.observe(viewLifecycleOwner, { ok ->
-            if (ok) valided()
-            else notValided()
-
+        /**
+         * this part observe if the edit text of login view is correctly filled then make another action
+         */
+        viewModel.isEmailValid.observe(viewLifecycleOwner, { ok ->
+            if (ok) emailValided()
+            else emailNotValided()
         })
 
+        /**
+         * this is to set the menu bar
+         */
         setHasOptionsMenu(true)
-        return bindingLogin.root
+        return binding.root
     }
 
 
@@ -87,9 +97,9 @@ class LoginFragment : Fragment() {
      * if is valided show the toast the notify is valid and ckeck datamail from database
      * if not show snackbar that the input mail is not valid
      */
-    private fun valided(){
-        Toast.makeText(activity, "Email Valided", Toast.LENGTH_LONG).show()
-        bindingLogin.editEmail.setTextColor(BLACK)
+    private fun emailValided(){
+        Toast.makeText(activity, " Email Validé ", Toast.LENGTH_LONG).show()
+        binding.editTextLoginEmail.setTextColor(BLACK)
         viewModel.getMail()
         showCurrentMail()
         findNavController().navigate(R.id.action_loginFragment2_to_courFragment)
@@ -99,10 +109,10 @@ class LoginFragment : Fragment() {
      * this method show the snackbar if the email is not correctly filled
      * and change the color of input mail to red
      */
-    private fun notValided() {
+    private fun emailNotValided() {
         Snackbar.make(requireView(), "Email not Valided", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show()
-        bindingLogin.editEmail.setTextColor(RED)
+        binding.editTextLoginEmail.setTextColor(RED)
     }
 
     /**

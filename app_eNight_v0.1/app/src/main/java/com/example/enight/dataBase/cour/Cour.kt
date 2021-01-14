@@ -4,28 +4,26 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * this is the table of the courses
+ */
 @Entity(tableName = "cour")
 data class Cour(
-    /**
-     * this variable represent the id of the data
-     */
-    @PrimaryKey(autoGenerate = true)
-    var etuNo : Long = 0L,
 
     /**
-     * this variable represent the mail of data
+     * this is the primary key with the name of the course
      */
-    @ColumnInfo(name = "cour")
-    var cour: String = "",
+    @PrimaryKey
+    var courId: String = "null",
 
     /**
-     * this variable represent the mail of data
+     * this variable represent credit number of the course
      */
     @ColumnInfo(name = "nbCredit")
     var nbCredit: Long = 0L,
 
     /**
-     * this variable represent the date when data is used
+     * this is the notification if the course is success
      */
     @ColumnInfo(name = "valided")
     var valided: Boolean = false

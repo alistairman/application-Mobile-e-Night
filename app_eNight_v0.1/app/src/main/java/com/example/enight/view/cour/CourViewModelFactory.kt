@@ -5,6 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.dataBase.cour.CourDatabaseDao
 
+/**
+ * this is the factory of the view model of the course fragment
+ * this class create view model with specific argument the view model needed
+ */
 class CourViewModelFactory (
     private val database : CourDatabaseDao,
     private val application: Application

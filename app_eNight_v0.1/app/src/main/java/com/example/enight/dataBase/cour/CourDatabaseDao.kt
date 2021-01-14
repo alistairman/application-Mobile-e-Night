@@ -6,48 +6,47 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 
+/**
+ * this is all possible query done on the courses table
+ * this interface make the link between the app and the table of courses
+ */
 @Dao
 interface CourDatabaseDao {
     /**
-     * this method insert a data into the database
+     * this method insert a new course into the courses table
      */
     @Insert
     suspend fun insert(cour: Cour)
 
     /**
-     * this method update a data into the database
+     * this method update a course into course table
      */
     @Update
     suspend fun update(cour: Cour)
 
-    /**
-     * this method get a specific data by id from the database
-     */
-    @Query("Select * from Cour where etuNo = :key")
-    suspend fun get(key: Long) : Cour?
 
     /**
-     * this method get a specific data by value of mail from the database
+     * this method get a specific course by course's name from the courses table
      */
-    @Query("Select * from cour where cour like :key")
+    @Query("Select * from cour where courId like :key")
     suspend fun getCour(key: String) : Cour?
 
     /**
-     * this method delete all data into database
+     * this method delete all courses from table
      */
     @Query("delete from cour")
     suspend fun clear()
 
     /**
-     * this method get the last data from the database
+     * this method get the last course from the table
      */
-    @Query("select * from cour order by etuNo desc limit 1")
+    @Query("select * from cour order by courId desc limit 1")
     suspend fun getToCour(): Cour?
 
     /**
-     * this method get all data from database
+     * this method get all data from table
      */
-    @Query("select * from cour order by etuNo desc")
+    @Query("select * from cour order by courId desc")
     fun getAll(): LiveData<List<Cour>>
 
 }

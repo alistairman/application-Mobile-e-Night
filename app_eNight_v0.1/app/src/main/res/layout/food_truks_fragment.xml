@@ -30,7 +30,7 @@
             android:layout_width="299dp"
             android:layout_height="wrap_content"
             android:hint="@string/pas_encore_trouv"
-            android:text="@{ViewModel.foodTrucks}"
+            android:text="@{ViewModel.foodTrucksNb}"
             app:layout_constraintBottom_toTopOf="@+id/recyclerView_foodtrucks"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

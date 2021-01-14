@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enight.R
-import com.example.enight.cache.FoodTruckModel
-import com.example.enight.dataBase.profile.Profile
 import com.example.enight.network.FoodTruck
 
+/**
+ * this class is the adapter of the food truck fragment to show it in view
+ */
 class FoodTrucksAdapter:RecyclerView.Adapter<FoodTrucksAdapter.ViewHolder>(){
 
-    var data = listOf<FoodTruckModel>()
+    var data = listOf<FoodTruck>()
         set(value) {
             field = value
             notifyDataSetChanged()
