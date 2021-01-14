@@ -9,7 +9,6 @@ import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
@@ -27,7 +26,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         /**
          * this part create the data binding for this fragment
@@ -37,7 +36,7 @@ class ProfileFragment : Fragment() {
         )
 
         /**
-         * this part config and create the view model of the fragement
+         * this part config and create the view model of the fragment
          */
         val application = requireNotNull(this.activity).application
         val dataSource = EnightDB.getInstance(application).profileDatabaseDao
@@ -71,7 +70,7 @@ class ProfileFragment : Fragment() {
         /**
          * this part observe data from view model to fill the recycle view
          */
-        viewModel.profiles.observe(viewLifecycleOwner, Observer {
+        viewModel.profiles.observe(viewLifecycleOwner, {
             it?.let {
                 adapterRecycleView.submitList(it)
             }

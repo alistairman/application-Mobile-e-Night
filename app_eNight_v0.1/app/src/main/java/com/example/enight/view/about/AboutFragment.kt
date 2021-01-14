@@ -27,7 +27,7 @@ class AboutFragment : Fragment() {
      */
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
         /**
          * this variable represent the data binding of this fragment

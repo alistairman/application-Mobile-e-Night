@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 /**
- * this is the viewmodel part of MVVM of user interface
+ * this is the view model part of MVVM of user interface
  */
 class LoginViewModel(
     private val database: EmailDatabaseDao,

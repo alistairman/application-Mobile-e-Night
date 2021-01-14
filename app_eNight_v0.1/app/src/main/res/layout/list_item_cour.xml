@@ -21,7 +21,7 @@
             android:background="#2196F3"
             android:textAlignment="center"
             android:textColor="#F6F6F3"
-            app:courNameTextview="@{cour}"
+            app:courNameTextView="@{cour}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.075"

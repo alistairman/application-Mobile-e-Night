@@ -9,7 +9,7 @@
     <string name="prenom">Prenom : </string>
     <string name="about_me">About Me</string>
     <string name="quote_format">\"%s\"</string>
-    <string name="fragement_login_label">Login</string>
+    <string name="fragment_login_label">Login</string>
     <string name="fragment_about_me_label">About Me</string>
     <string name="profile_fragment_label">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->

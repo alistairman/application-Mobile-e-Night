@@ -1,4 +1,4 @@
-package com.example.enight.view.profile
+package com.example.enight
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -10,28 +10,28 @@ fun TextView.profileEmailText(item: Profile) {
     text = item.mail
 }
 
-@BindingAdapter("profileFirstnameText")
-fun TextView.profileFirstnameText(item: Profile) {
+@BindingAdapter("profileFirstNameText")
+fun TextView.profileFirstNameText(item: Profile) {
     text = item.firstName
 }
 
-@BindingAdapter("profileLastnameText")
-fun TextView.profileLastnameText(item: Profile) {
+@BindingAdapter("profileLastNameText")
+fun TextView.profileLastNameText(item: Profile) {
     text = item.lastName
 }
 
-@BindingAdapter("courNameTextview")
+@BindingAdapter("courNameTextView")
 fun TextView.courNameText(item: Cour) {
     text = item.courId
 }
 
-@BindingAdapter("courNbCreditTextview")
+/**@BindingAdapter("courNbCreditTextView")
 fun TextView.courNbCreditText(item: Cour) {
     text = item.nbCredit.toString()+ " ECTS"
 }
 
-@BindingAdapter("courValidedTextview")
+@BindingAdapter("courValidedTextView")
 fun TextView.courValidedText(item: Cour) {
     text = if(item.valided) "OK"
     else "NOK"
-}
+}*/

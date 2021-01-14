@@ -1,12 +1,11 @@
 package com.example.enight.view.cour
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,7 +25,7 @@ class CourFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         /**
          * this part create the data binding of the fragment
@@ -59,7 +58,7 @@ class CourFragment : Fragment() {
         /**
          * this part set the recycle view with data from view model
          */
-        viewModel.coursesList.observe(viewLifecycleOwner, Observer {
+        viewModel.coursesList.observe(viewLifecycleOwner, {
             it?.let { adapter.submitList(it) }
         })
 
@@ -68,7 +67,7 @@ class CourFragment : Fragment() {
          */
         viewModel.isGoToShop.observe(viewLifecycleOwner,{
             if(it) {
-                findNavController().navigate(R.id.action_courFragment_to_foodTruksFragment)
+                findNavController().navigate(R.id.action_courFragment_to_foodTrucksFragment)
                 viewModel.done()
             }
         })
@@ -88,7 +87,7 @@ android:id="@+id/nbCredit"
 android:layout_width="101dp"
 android:layout_height="18dp"
 android:textAlignment="center"
-app:courNbCreditTextview="@{cour}"
+app:courNbCreditTextView="@{cour}"
 app:layout_constraintBottom_toBottomOf="parent"
 app:layout_constraintEnd_toStartOf="@+id/valided"
 app:layout_constraintHorizontal_bias="0.5"
@@ -101,7 +100,7 @@ android:id="@+id/valided"
 android:layout_width="101dp"
 android:layout_height="18dp"
 android:textAlignment="center"
-app:courValidedTextview="@{cour}"
+app:courValidedTextView="@{cour}"
 app:layout_constraintBottom_toBottomOf="parent"
 app:layout_constraintEnd_toEndOf="parent"
 app:layout_constraintHorizontal_bias="0.5"

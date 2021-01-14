@@ -28,7 +28,7 @@
 
             <TextView
                 android:id="@+id/id_title_mes_cours"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/mes_cours"
@@ -62,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/clear"
-                android:onClick="@{() -> CourViewModel.clear()}"/>
+                android:onClick="@{() -> CourViewModel.clear()}"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/id_button_ajouter_cour"
@@ -70,7 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> CourViewModel.addCourse()}"
-                android:text="@string/ajouter" />
+                android:text="@string/ajouter"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/id_button_GotToShop"
@@ -78,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> CourViewModel.isGoToShopClicked()}"
-                android:text="@string/go_to_shop" />
+                android:text="@string/go_to_shop"
+                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 

@@ -16,7 +16,7 @@ import retrofit2.Response
 /**
  *this is the view model of the food truck fragment
  */
-class FoodTruksViewModel(application: Application) : AndroidViewModel(application) {
+class FoodTruckViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * this variable is used to represent the number of food truck found
@@ -39,7 +39,7 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
 
 
     /**
-     * this method initialize the view model by calling getFoodTrcuks method
+     * this method initialize the view model by calling get Food Trucks method
      */
     init {
         getFoodTrucks()
@@ -49,7 +49,7 @@ class FoodTruksViewModel(application: Application) : AndroidViewModel(applicatio
     /**
      * this method call the api method to get food trucks
      * if the call success then we get the number of the food truck found
-     * then for each value we call the makefoodList method to get only specific value of food truck
+     * then for each value we call the make foodList method to get only specific value of food truck
      * then add food truck into the food truck list variable
      * if call not success then show the error message
      */

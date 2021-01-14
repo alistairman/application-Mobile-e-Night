@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding
 
     /**
-     * this is the viewmodel for MVVM  architecture of this fragment
+     * this is the view model for MVVM  architecture of this fragment
      */
     private lateinit var viewModel: LoginViewModel
 
@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login,

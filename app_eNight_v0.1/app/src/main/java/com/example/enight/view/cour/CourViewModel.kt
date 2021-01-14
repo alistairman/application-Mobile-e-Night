@@ -50,8 +50,8 @@ class CourViewModel(
      * get value from course name edit text and number of ECTS edit text
      */
     fun addCourse(){
-        var name:String = ""
-        var nbCredit:String = ""
+        var name = ""
+        var nbCredit = ""
 
         if(!editCourName.value.isNullOrEmpty()){
             name = editCourName.value.toString()

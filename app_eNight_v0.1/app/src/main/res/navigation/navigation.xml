@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/loginFragment2"
         android:name="com.example.enight.view.login.LoginFragment"
-        android:label="@string/fragement_login_label"
+        android:label="@string/fragment_login_label"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment2_to_courFragment"
@@ -36,12 +36,12 @@
         android:label="@string/Label_fragment_cour"
         tools:layout="@layout/fragment_cour" >
         <action
-            android:id="@+id/action_courFragment_to_foodTruksFragment"
-            app:destination="@id/foodTruksFragment" />
+            android:id="@+id/action_courFragment_to_foodTrucksFragment"
+            app:destination="@id/foodTrucksFragment" />
     </fragment>
     <fragment
-        android:id="@+id/foodTruksFragment"
-        android:name="com.example.enight.view.foodTrucks.FoodTruksFragment"
+        android:id="@+id/foodTrucksFragment"
+        android:name="com.example.enight.view.foodTrucks.FoodTruckFragment"
         android:label="@string/Food_Trucks_List_label"
-        tools:layout="@layout/food_truks_fragment" />
+        tools:layout="@layout/food_trucks_fragment" />
 </navigation>

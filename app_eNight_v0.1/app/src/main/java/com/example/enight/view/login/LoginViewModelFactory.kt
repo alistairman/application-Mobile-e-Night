@@ -7,7 +7,7 @@ import com.example.enight.dataBase.email.EmailDatabaseDao
 import com.example.enight.dataBase.profile.ProfileDatabaseDao
 
 /**
- * this class represent the factory of the fragment to config viewmodel
+ * this class represent the factory of the fragment to config view model
  */
 class LoginViewModelFactory(
     private val database: EmailDatabaseDao,
