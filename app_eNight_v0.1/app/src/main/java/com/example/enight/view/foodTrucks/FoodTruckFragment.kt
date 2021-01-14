@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FoodTrucksFragmentBinding
 
 /**
@@ -15,20 +16,20 @@ class FoodTruckFragment : Fragment() {
 
 
     /**
-     * this is the view model of this fragment
-     * but the view model is create at the first time it'll be used
-     */
-    private val viewModel: FoodTruckViewModel by lazy {
-        ViewModelProvider(this).get(FoodTruckViewModel::class.java)
-    }
-
-    /**
      * this method create and set this fragment
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        /**
+         * this part create a view model by using factory with data base as argument
+         */
+        val application = requireNotNull(this.activity).application
+        val dataSource = EnightDB.getInstance(application).foodTruckDatabaseDao
+        val viewModelFactory = FoodTruckViewModelFactory(dataSource, application)
+        val viewModel = ViewModelProvider(this,viewModelFactory).get(FoodTruckViewModel::class.java)
 
         /**
          * this part create and set the data binding and the viewmodel with binding part of view
@@ -46,10 +47,8 @@ class FoodTruckFragment : Fragment() {
         /**
          * this part set the recycle view with data from the view model
          */
-        viewModel.foodTrucksList.observe(viewLifecycleOwner,{
-            it?.let {
-                adapterRecycleView.data = it
-            }
+        viewModel.foodTruckList.observe(viewLifecycleOwner,{
+            it?.let { adapterRecycleView.submitList(it)}
         })
         return binding.root
     }

@@ -1,12 +1,17 @@
 package com.example.enight.view.foodTrucks
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.enight.dataBase.foodTruck.FoodTruck
+import com.example.enight.dataBase.foodTruck.FoodTruckDatabaseDao
 import com.example.enight.network.FoodApi
-import com.example.enight.network.FoodTruck
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,7 +21,9 @@ import retrofit2.Response
 /**
  *this is the view model of the food truck fragment
  */
-class FoodTruckViewModel(application: Application) : AndroidViewModel(application) {
+class FoodTruckViewModel(
+    private val database: FoodTruckDatabaseDao,
+    application: Application) : AndroidViewModel(application) {
 
     /**
      * this variable is used to represent the number of food truck found
@@ -25,17 +32,12 @@ class FoodTruckViewModel(application: Application) : AndroidViewModel(applicatio
     val foodTrucksNb : LiveData<String>
         get() = _foodTrucksNb
 
-    /**
-     * this variable represent a list of food trucks found
-     */
-    private val _foodTrucksList = MutableLiveData<List<FoodTruck>>()
-    val foodTrucksList: LiveData<List<FoodTruck>>
-        get() = _foodTrucksList
 
     /**
      * this variable is used to fill the recycle view with diff food truck
+     * this variable represent a list of food trucks found
      */
-    var list = ArrayList<FoodTruck>()
+    var foodTruckList = database.getAll()
 
 
     /**
@@ -56,6 +58,7 @@ class FoodTruckViewModel(application: Application) : AndroidViewModel(applicatio
    private fun getFoodTrucks(){
         viewModelScope.launch {
             try {
+                delay(3000)
                 val result = FoodApi.retrofitService.getProperties()
                 result.enqueue(
                     object : Callback<JsonObject> {
@@ -69,7 +72,6 @@ class FoodTruckViewModel(application: Application) : AndroidViewModel(applicatio
                             for (value in array ){
                                     makeFoodList(value)
                                 }
-                                _foodTrucksList.value = list
                             }
                         }
                         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -79,6 +81,7 @@ class FoodTruckViewModel(application: Application) : AndroidViewModel(applicatio
                 )
             }
             catch (e: Exception){
+                delay(3000)
                 _foodTrucksNb.value = "Fail ${e.message}"
             }
         }
@@ -92,7 +95,9 @@ class FoodTruckViewModel(application: Application) : AndroidViewModel(applicatio
         val location = value.asJsonObject.get("fields").asJsonObject.get("emplacement")
         val geometryAtl = value.asJsonObject.get("geometry").asJsonObject.get("coordinates").asJsonArray[0]
         val geometryLog = value.asJsonObject.get("geometry").asJsonObject.get("coordinates").asJsonArray[1]
-        val newFood = FoodTruck(location.toString(),geometryAtl.asInt,geometryLog.asInt)
-        list.add(newFood)
+        val newFood = FoodTruck(location.toString(),geometryAtl.asFloat,geometryLog.asFloat)
+        viewModelScope.launch {
+            database.insert(newFood)
+        }
     }
 }

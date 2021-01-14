@@ -8,13 +8,15 @@ import com.example.enight.dataBase.cour.Cour
 import com.example.enight.dataBase.cour.CourDatabaseDao
 import com.example.enight.dataBase.email.Email
 import com.example.enight.dataBase.email.EmailDatabaseDao
+import com.example.enight.dataBase.foodTruck.FoodTruck
+import com.example.enight.dataBase.foodTruck.FoodTruckDatabaseDao
 import com.example.enight.dataBase.profile.Profile
 import com.example.enight.dataBase.profile.ProfileDatabaseDao
 
 /**
  * this class represent the database of the app with different tables
  */
-@Database(entities = [Email::class,Profile::class,Cour::class], version = 6, exportSchema = false)
+@Database(entities = [Email::class,Profile::class,Cour::class,FoodTruck::class], version = 12, exportSchema = false)
 abstract class EnightDB : RoomDatabase() {
 
     /**
@@ -31,6 +33,8 @@ abstract class EnightDB : RoomDatabase() {
      * this variable is used to access to courses table
      */
     abstract val courDatabaseDao : CourDatabaseDao
+
+    abstract val foodTruckDatabaseDao : FoodTruckDatabaseDao
 
     /**
      * this companion create and make the connexion to database

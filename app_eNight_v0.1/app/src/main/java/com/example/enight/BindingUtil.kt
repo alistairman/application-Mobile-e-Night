@@ -3,6 +3,7 @@ package com.example.enight
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.enight.dataBase.cour.Cour
+import com.example.enight.dataBase.foodTruck.FoodTruck
 import com.example.enight.dataBase.profile.Profile
 
 @BindingAdapter("profileEmailText")
@@ -23,6 +24,11 @@ fun TextView.profileLastNameText(item: Profile) {
 @BindingAdapter("courNameTextView")
 fun TextView.courNameText(item: Cour) {
     text = item.courId
+}
+
+@BindingAdapter("foodTruckNameTextView")
+fun TextView.foodTruckNameText(item: FoodTruck) {
+    text = item.location
 }
 
 /**@BindingAdapter("courNbCreditTextView")
