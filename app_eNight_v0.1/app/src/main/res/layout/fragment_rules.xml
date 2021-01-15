@@ -5,10 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".RulesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/rule_about_app" />
+        android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/rule_about_app" />
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

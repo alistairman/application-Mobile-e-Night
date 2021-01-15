@@ -66,7 +66,7 @@ class CourFragment : Fragment() {
          * this part create adapter for the recycle view
          */
         val adapter = CourAdapter(CourListener { courId ->
-            Toast.makeText(context, courId , Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, courId , Toast.LENGTH_LONG).show()
             viewModel.onCourClicked(courId)
         })
         binding.recyclerViewCour.adapter = adapter

@@ -3,6 +3,7 @@ package com.example.enight.view.courDetail
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -37,15 +38,19 @@ class CourDetailFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.navigateToCour.observe(viewLifecycleOwner, Observer {
-            if(it==true) {
-                //this.findNavController().navigate(R.id.action_courFragment_to_courDetailFragment)
-                //viewModel.doneNavigate()
+        viewModel.onCourValided.observe(viewLifecycleOwner, {
+            if (it){
+                requireView().findViewById<Button>(R.id.id_button_set_valided).visibility = View.GONE
+                //viewModel.reInitValues()
+                viewModel.doneValided()
             }
         })
 
-        viewModel.onCourValided.observe(viewLifecycleOwner, Observer {
-            if(it==true) binding.idButtonSetValided.visibility = View.GONE
+        viewModel.alreadyValided.observe(viewLifecycleOwner, {
+            if(it){
+                requireView().findViewById<Button>(R.id.id_button_set_valided).visibility = View.GONE
+                viewModel.reinitValided()
+            }
         })
 
         setHasOptionsMenu(true)

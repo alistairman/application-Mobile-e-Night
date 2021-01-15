@@ -7,66 +7,70 @@ import com.example.enight.dataBase.cour.CourDatabaseDao
 import kotlinx.coroutines.launch
 
 class CourDetailViewModel(
-    private val courId:String = "ALG3",
+    private val courId:String,
     private val database: CourDatabaseDao,
     application: Application
-) : AndroidViewModel(application) {
+) : AndroidViewModel(application){
 
-    private val cour: LiveData<Cour>
+    private val cour = MutableLiveData<Cour>()
     fun getCour() = cour
 
     var nbCredit= MutableLiveData<String>()
     var valided= MutableLiveData<String>()
 
     init {
-        cour = database.getCourWithId(courId)
-        nbCredit.value = cour.value?.nbCredit.toString()
-        valided.value = cour.value?.valided.toString()
-        //initValues()
+        initValues()
     }
 
+    fun reInitValues(){
+        initValues()
+    }
     private fun initValues(){
         viewModelScope.launch {
-            val course = database.getCour(courId)
-            nbCredit.value = course?.nbCredit.toString()
-            if (course != null) {
-                valided.value = if(course.valided) "OK"
-                else "NOK"
+            cour.value = database.getCour(courId)
+            nbCredit.value =cour.value?.nbCredit.toString()+" "+"ECTS"
+            val ok = cour.value?.valided
+            if(ok!!){
+                valided.value = "OK"
+                _alreadyValided.value = true
+            }
+            else{
+                valided.value = "NOK"
             }
         }
 
     }
 
-    private val _onCourValided = MutableLiveData<Boolean?>()
+    private val _alreadyValided = MutableLiveData<Boolean>()
+    val alreadyValided: LiveData<Boolean>
+        get() = _alreadyValided
 
+    fun reinitValided(){
+        _alreadyValided.value = false
+    }
     /**
      * When true immediately navigate back to the [SleepTrackerFragment]
      */
-    val onCourValided: LiveData<Boolean?>
+    private val _onCourValided = MutableLiveData<Boolean>()
+    val onCourValided: LiveData<Boolean>
         get() = _onCourValided
 
-    private val _navigateToCour = MutableLiveData<Boolean?>()
 
-    /**
-     * When true immediately navigate back to the [SleepTrackerFragment]
-     */
-    val navigateToCour: LiveData<Boolean?>
-        get() = _navigateToCour
-
-
-    /**
-     * Call this immediately after navigating to [SleepTrackerFragment]
-     */
-    fun doneNavigate() {
-        _navigateToCour.value = null
+    fun courValided(){
+        viewModelScope.launch {
+            val cour = database.getCour(courId)
+            if(cour?.valided==false) cour.valided = true
+            update(cour!!)
+            _onCourValided.value = true
+        }
+    }
+    fun doneValided(){
+        _onCourValided.value = false
     }
 
-    fun onCloseClicked() {
-        _navigateToCour.value = true
+    fun update(cour: Cour){
+        viewModelScope.launch {
+            database.update(cour)
+        }
     }
-
-    /**fun courValided(){
-        cour.value?.valided = true
-        _onCourValided.value = true
-    }*/
 }

@@ -55,22 +55,13 @@
             android:id="@+id/id_button_set_valided"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.courValided()}"
             android:text="@string/valid"
-            app:layout_constraintBottom_toTopOf="@+id/id_button_closed"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_cour_detail_valided" />
 
-        <Button
-            android:id="@+id/id_button_closed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()-> viewModel.onCloseClicked()}"
-            android:text="@string/close"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_button_set_valided" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
