@@ -10,22 +10,17 @@ import com.example.enight.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    //private lateinit var drawer : DrawerLayout
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(
             this,R.layout.activity_main)
 
-        //drawer = binding.drawerLayout
-
-        //val navController = this.findNavController(R.id.myNavHostFragment)
-        //NavigationUI.setupActionBarWithNavController(this,navController)
-        //NavigationUI.setupWithNavController(binding.navView, navController)
+        val navController = this.findNavController(R.id.myNavHostFragment)
+        NavigationUI.setupActionBarWithNavController(this,navController)
     }
 
-    /**override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
         return navController.navigateUp()
-    }*/
+    }
 }

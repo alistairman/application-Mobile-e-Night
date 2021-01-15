@@ -37,4 +37,22 @@
     <string name="close">Close</string>
     <string name="courDetail_label">Détail du Cour</string>
     <string name="log_out">Log out</string>
+    <string name="rule_about_app"> Hi, This is e-night App.
+\n\n Course Part.
+\n\n This part help student to manager their courses during an school year.
+\n Your can add all courses you got for the year and your can have a look of all of them
+\n When you click on one of them your can see the details like how many ETCS is it and if you already success that course
+
+\n\n Profile part.
+\n\n In this part you can manage all users of the app on your gsm.
+\n You can also set any profile by adding or change a first name and last name of an user
+\nand you can have a look of all users which has already used you app.
+
+        \n\nFood Truck Part.
+        \n\n If your are in brussels town and looking for something to eat
+        \n you can use this part of app that has a list of all food truck in brussels
+        \n but unfortunately is not finish.
+        \n hopefully, i will be focus on this part after i passed all my exam.
+        \n\n
+        \n\nHope this app will be helpful to you, Thank u </string>
 </resources>
