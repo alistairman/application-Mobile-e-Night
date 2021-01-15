@@ -3,7 +3,9 @@ package com.example.enight.view.cour
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +22,9 @@ import com.example.enight.databinding.FragmentCourBinding
  */
 class CourFragment : Fragment() {
 
+    private lateinit var drawer : DrawerLayout
+
+
     /**
      * this method create and set the fragment
      * set the view model, set the adapter
@@ -35,6 +40,12 @@ class CourFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentCourBinding>(
             inflater,R.layout.fragment_cour,
             container,false)
+
+        drawer = binding.drawerLayout
+
+        //val navController = this.findNavController(R.id.courFragment)
+        NavigationUI.setupActionBarWithNavController(requireActivity() as AppCompatActivity,findNavController())
+        NavigationUI.setupWithNavController(binding.navView, findNavController())
 
         /**
          * this part create the factory view model
@@ -100,6 +111,10 @@ class CourFragment : Fragment() {
         setHasOptionsMenu(true)
         return binding.root
     }
+
+    /**override fun onSupportNavigateUp(): Boolean {
+        return findNavController().navigateUp()
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
