@@ -1,27 +1,40 @@
 package com.example.enight.view.courDetail
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.example.enight.dataBase.cour.Cour
 import com.example.enight.dataBase.cour.CourDatabaseDao
+import kotlinx.coroutines.launch
 
 class CourDetailViewModel(
     private val courId:String = "ALG3",
     private val database: CourDatabaseDao,
     application: Application
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
-    //private val cour: LiveData<Cour>
+    private val cour: LiveData<Cour>
+    fun getCour() = cour
 
-    //fun getCour() = cour
-
-    var value :String =""
+    var nbCredit= MutableLiveData<String>()
+    var valided= MutableLiveData<String>()
 
     init {
-        value = courId
-        //cour = database.getCourWithId(courId)
+        cour = database.getCourWithId(courId)
+        nbCredit.value = cour.value?.nbCredit.toString()
+        valided.value = cour.value?.valided.toString()
+        //initValues()
+    }
+
+    private fun initValues(){
+        viewModelScope.launch {
+            val course = database.getCour(courId)
+            nbCredit.value = course?.nbCredit.toString()
+            if (course != null) {
+                valided.value = if(course.valided) "OK"
+                else "NOK"
+            }
+        }
+
     }
 
     private val _onCourValided = MutableLiveData<Boolean?>()

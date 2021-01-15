@@ -36,4 +36,5 @@
     <string name="valid">Validé</string>
     <string name="close">Close</string>
     <string name="courDetail_label">Détail du Cour</string>
+    <string name="log_out">Log out</string>
 </resources>

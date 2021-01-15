@@ -11,9 +11,7 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment2_to_courFragment"
-            app:destination="@id/courFragment"
-            app:popUpTo="@id/loginFragment2"
-            app:popUpToInclusive="true" />
+            app:destination="@id/courFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -37,12 +35,12 @@
         tools:layout="@layout/fragment_cour" >
         <action
             android:id="@+id/action_courFragment_to_foodTrucksFragment"
-            app:destination="@id/foodTrucksFragment" />
+            app:destination="@id/foodTrucksFragment"
+            app:popUpTo="@id/courFragment" />
         <action
             android:id="@+id/action_courFragment_to_courDetailFragment"
             app:destination="@id/courDetailFragment"
-            app:popUpTo="@id/courFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/courFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodTrucksFragment"

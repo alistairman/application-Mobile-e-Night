@@ -1,15 +1,17 @@
 package com.example.enight.view.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
 import com.example.enight.databinding.FragmentProfileBinding
@@ -27,6 +29,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
 
         /**
          * this part create the data binding for this fragment
@@ -111,10 +114,15 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    /**override fun onSupportNavigateUp(): Boolean {
+        return findNavController().navigateUp()
+    }*/
+
     /**
      * this method is called to notify the user that the email is not registered in database
      */
     private fun notValided(){
         Toast.makeText(activity, "Email Not Registered yet ", Toast.LENGTH_LONG).show()
     }
+
 }

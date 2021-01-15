@@ -101,7 +101,6 @@ class LoginFragment : Fragment() {
         Toast.makeText(activity, " Email Validé ", Toast.LENGTH_LONG).show()
         binding.editTextLoginEmail.setTextColor(BLACK)
         viewModel.getMail()
-        //showCurrentMail()
         findNavController().navigate(R.id.action_loginFragment2_to_courFragment)
     }
 
@@ -115,32 +114,23 @@ class LoginFragment : Fragment() {
         binding.editTextLoginEmail.setTextColor(RED)
     }
 
-    /**
-     * this method show the connected mail with updated time and date
-     */
-    private fun showCurrentMail(){
-        val log = viewModel.currentLog.value?.mailId.toString()+" - "+
-                viewModel.currentLog.value?.mail+ " - "+
-                viewModel.currentLog.value?.date+ " - "+
-                viewModel.currentLog.value?.time
-        Toast.makeText(requireActivity(), log, Toast.LENGTH_LONG).show()
-    }
-
 
     /**
-     * this method create the menu button in this fragment
+     * this method create the menu button in this fragment with specific item
      */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.navdrawer_menu, menu)
+        menu.findItem(R.id.profileFragment).isVisible = false
+        menu.findItem(R.id.loginFragment2).isVisible = false
     }
 
     /**
      * this method navigate to the correct fragment when item of menu is selected
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, findNavController()) || super.onOptionsItemSelected(
-            item
-        )
+        return NavigationUI.onNavDestinationSelected(item, findNavController())
+                || super.onOptionsItemSelected(item)
     }
+
 }
