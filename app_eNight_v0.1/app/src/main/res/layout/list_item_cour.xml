@@ -7,6 +7,9 @@
         <variable
             name="cour"
             type="com.example.enight.dataBase.cour.Cour" />
+        <variable
+            name="clickListener"
+            type="com.example.enight.view.cour.CourListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,6 +25,7 @@
             android:textAlignment="center"
             android:textColor="#F6F6F3"
             app:courNameTextView="@{cour}"
+            android:onClick="@{() -> clickListener.onClick(cour)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.075"

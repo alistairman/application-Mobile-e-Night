@@ -39,6 +39,10 @@ class CourViewModel(
     val isGoToShop : LiveData<Boolean>
         get() = _isGoToShop
 
+    private val _goToCourDetail = MutableLiveData<String>()
+    val goToCourDetail
+        get() = _goToCourDetail
+
 
     init {
         editCourName.value = ""
@@ -95,5 +99,13 @@ class CourViewModel(
         viewModelScope.launch {
             database.clear()
         }
+    }
+
+    fun onCourClicked(courId: String) {
+        _goToCourDetail.value = courId
+    }
+
+    fun onCourNavigated() {
+        _goToCourDetail.value = null
     }
 }

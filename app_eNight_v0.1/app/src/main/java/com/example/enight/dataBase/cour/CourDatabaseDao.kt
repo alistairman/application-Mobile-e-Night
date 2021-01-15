@@ -49,4 +49,8 @@ interface CourDatabaseDao {
     @Query("select * from cour order by courId desc")
     fun getAll(): LiveData<List<Cour>>
 
+
+    @Query("SELECT * from cour WHERE courId = :key")
+    fun getCourWithId(key: String): LiveData<Cour>
+
 }

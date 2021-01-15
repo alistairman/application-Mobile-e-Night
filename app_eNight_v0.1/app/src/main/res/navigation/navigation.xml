@@ -38,10 +38,22 @@
         <action
             android:id="@+id/action_courFragment_to_foodTrucksFragment"
             app:destination="@id/foodTrucksFragment" />
+        <action
+            android:id="@+id/action_courFragment_to_courDetailFragment"
+            app:destination="@id/courDetailFragment"
+            app:popUpTo="@id/courFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/foodTrucksFragment"
         android:name="com.example.enight.view.foodTrucks.FoodTruckFragment"
         android:label="@string/Food_Trucks_List_label"
         tools:layout="@layout/food_trucks_fragment" />
+    <fragment
+        android:id="@+id/courDetailFragment"
+        android:name="com.example.enight.view.courDetail.CourDetailFragment"
+        android:label="@string/courDetail_label"
+        tools:layout="@layout/cour_detail_fragment">
+
+    </fragment>
 </navigation>

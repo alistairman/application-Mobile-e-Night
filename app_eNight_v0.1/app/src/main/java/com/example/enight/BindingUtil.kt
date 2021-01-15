@@ -22,8 +22,8 @@ fun TextView.profileLastNameText(item: Profile) {
 }
 
 @BindingAdapter("courNameTextView")
-fun TextView.courNameText(item: Cour) {
-    text = item.courId
+fun TextView.courNameText(item: Cour?) {
+    item?.let { text = item.courId }
 }
 
 @BindingAdapter("foodTruckNameTextView")
@@ -31,13 +31,18 @@ fun TextView.foodTruckNameText(item: FoodTruck?) {
     item?.let { text = item.location }
 }
 
-/**@BindingAdapter("courNbCreditTextView")
-fun TextView.courNbCreditText(item: Cour) {
-    text = item.nbCredit.toString()+ " ECTS"
+@BindingAdapter("courDetailTitle")
+fun TextView.courDetailTitle(item: Cour) {
+    text = item.courId
 }
 
-@BindingAdapter("courValidedTextView")
-fun TextView.courValidedText(item: Cour) {
+@BindingAdapter("courDetailNbCreditTextView")
+fun TextView.courDetailNbCreditText(item: Cour) {
+    text = item.nbCredit.toString()
+}
+
+@BindingAdapter("courDetailValidedTextView")
+fun TextView.courDetailValidedText(item: Cour) {
     text = if(item.valided) "OK"
     else "NOK"
-}*/
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.enight.view.courDetail.CourDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.courDetail.CourDetailFragment">
+
+        <TextView
+            android:id="@+id/id_cour_detail_nbCredit"
+            android:layout_width="101dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="109dp"
+            android:textAlignment="center"
+
+            app:layout_constraintBottom_toTopOf="@+id/id_button_set_valided"
+            app:layout_constraintEnd_toStartOf="@+id/id_cour_detail_valided"
+            app:layout_constraintHorizontal_bias="0.328"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_cour_detail_title"
+            app:layout_constraintVertical_bias="0.067" />
+
+        <TextView
+            android:id="@+id/id_cour_detail_valided"
+            android:layout_width="101dp"
+            android:layout_height="18dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/id_button_set_valided"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.832"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_cour_detail_title" />
+
+        <TextView
+            android:id="@+id/id_cour_detail_title"
+            android:layout_width="358dp"
+            android:layout_height="44dp"
+            android:background="#96C4EA"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/id_cour_detail_valided"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/id_button_set_valided"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/valid"
+            app:layout_constraintBottom_toTopOf="@+id/id_button_closed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_cour_detail_valided" />
+
+        <Button
+            android:id="@+id/id_button_closed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.onCloseClicked()}"
+            android:text="@string/close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_button_set_valided" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

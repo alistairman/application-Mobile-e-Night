@@ -33,4 +33,7 @@
     <string name="profile">Profile</string>
     <string name="Food_Trucks_List_label">Food Trucks List</string>
     <string name="pas_encore_trouv">Pas encore trouvé</string>
+    <string name="valid">Validé</string>
+    <string name="close">Close</string>
+    <string name="courDetail_label">Détail du Cour</string>
 </resources>
