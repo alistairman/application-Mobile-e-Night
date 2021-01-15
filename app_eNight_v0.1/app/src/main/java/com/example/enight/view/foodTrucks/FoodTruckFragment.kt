@@ -58,9 +58,8 @@ class FoodTruckFragment : Fragment() {
             it?.let { adapterRecycleView.submitList(it)}
         })
 
-        viewModel.findFoodTruck.observe(viewLifecycleOwner, Observer { location ->
+        viewModel.findFoodTruck.observe(viewLifecycleOwner, { location ->
             location?.let {
-                // ici je dois naviguer vers google map
                 viewModel.onMapNavigated()
             }
         })

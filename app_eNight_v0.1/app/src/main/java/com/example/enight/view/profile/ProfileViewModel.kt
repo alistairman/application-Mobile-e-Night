@@ -147,8 +147,4 @@ class ProfileViewModel(
             database.update(profile)
         }
     }
-
-
-
-
 }

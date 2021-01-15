@@ -2,12 +2,10 @@ package com.example.enight.view.cour
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -43,7 +41,6 @@ class CourFragment : Fragment() {
 
         drawer = binding.drawerLayout
 
-        //val navController = this.findNavController(R.id.courFragment)
         NavigationUI.setupActionBarWithNavController(requireActivity() as AppCompatActivity,findNavController())
         NavigationUI.setupWithNavController(binding.navView, findNavController())
 
@@ -64,9 +61,10 @@ class CourFragment : Fragment() {
 
         /**
          * this part create adapter for the recycle view
+         * and set the click listener on each course
+         * and give the id of course like an argument
          */
         val adapter = CourAdapter(CourListener { courId ->
-            //Toast.makeText(context, courId , Toast.LENGTH_LONG).show()
             viewModel.onCourClicked(courId)
         })
         binding.recyclerViewCour.adapter = adapter
@@ -90,12 +88,11 @@ class CourFragment : Fragment() {
             }
         })
 
-        //  food truck
-        // =================================
-        // cour detail
 
-
-        viewModel.goToCourDetail.observe(viewLifecycleOwner, Observer { courId ->
+        /**
+         * this part navigate to the detail of course clicked
+         */
+        viewModel.goToCourDetail.observe(viewLifecycleOwner, { courId ->
             courId?.let {
                 findNavController().navigate(CourFragmentDirections.actionCourFragmentToCourDetailFragment(courId))
                 viewModel.onCourNavigated()
@@ -112,15 +109,17 @@ class CourFragment : Fragment() {
         return binding.root
     }
 
-    /**override fun onSupportNavigateUp(): Boolean {
-        return findNavController().navigateUp()
-    }*/
-
+    /**
+     * this part create a menu on bar
+     */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.navdrawer_menu, menu)
     }
 
+    /**
+     * this part set the item menu click and navigate to the destination
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.
         onNavDestinationSelected(item,requireView().findNavController())

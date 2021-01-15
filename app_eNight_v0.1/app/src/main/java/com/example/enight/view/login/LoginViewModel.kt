@@ -27,7 +27,7 @@ class LoginViewModel(
     /**
      * this variable is the live data of the current mail logged
      */
-    var currentLog = MutableLiveData<Email?>()
+    private var currentLog = MutableLiveData<Email?>()
 
 
     /**

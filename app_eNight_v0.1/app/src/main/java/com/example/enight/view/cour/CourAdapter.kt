@@ -14,7 +14,7 @@ import com.example.enight.databinding.ListItemCourBinding
 * in the recycle view
 * the courseDiffCallBack is use the know witch data has been changed
 */
-class CourAdapter(val clickListener: CourListener): ListAdapter<Cour, CourAdapter.ViewHolder>(CourDiffCallback()){
+class CourAdapter(private val clickListener: CourListener): ListAdapter<Cour, CourAdapter.ViewHolder>(CourDiffCallback()){
 
 
     /**
@@ -80,6 +80,9 @@ class CourDiffCallback : DiffUtil.ItemCallback<Cour>() {
     }
 }
 
+/**
+ * this class is the listener of an click on the courses recycle view
+ */
 class CourListener(val clickListener: (courId: String) -> Unit) {
     fun onClick(cour: Cour) = clickListener(cour.courId)
 

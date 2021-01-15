@@ -11,7 +11,7 @@ import com.example.enight.databinding.ListItemFoodtrucksBinding
 /**
  * this class is the adapter of the food truck fragment to show it in view
  */
-class FoodTrucksAdapter(val clickListener: FoodTruckListener): ListAdapter<FoodTruck, FoodTrucksAdapter.ViewHolder>(
+class FoodTrucksAdapter(private val clickListener: FoodTruckListener): ListAdapter<FoodTruck, FoodTrucksAdapter.ViewHolder>(
     FoodTruckDiffCallback()){
 
 

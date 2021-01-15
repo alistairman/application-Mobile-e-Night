@@ -4,8 +4,11 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.enight.dataBase.cour.CourDatabaseDao
-import com.example.enight.view.cour.CourViewModel
 
+/**
+ * this is the factory of the course detail view model
+ * he receive the id of the course clicked and the database
+ */
 class CourDetailViewModelFactory (
     private val courId: String,
     private val database: CourDatabaseDao,

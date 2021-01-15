@@ -13,7 +13,6 @@
     <string name="fragment_about_me_label">About Me</string>
     <string name="profile_fragment_label">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_rules_label">Rules</string>
     <string name="email_label">Email :</string>
     <string name="nom_label">Nom :</string>
@@ -34,7 +33,6 @@
     <string name="Food_Trucks_List_label">Food Trucks List</string>
     <string name="pas_encore_trouv">Pas encore trouvé</string>
     <string name="valid">Validé</string>
-    <string name="close">Close</string>
     <string name="courDetail_label">Détail du Cour</string>
     <string name="log_out">Log out</string>
     <string name="rule_about_app"> Hi, This is e-night App.

@@ -31,18 +31,3 @@ fun TextView.foodTruckNameText(item: FoodTruck?) {
     item?.let { text = item.location }
 }
 
-@BindingAdapter("courDetailTitle")
-fun TextView.courDetailTitle(item: Cour) {
-    text = item.courId
-}
-
-@BindingAdapter("courDetailNbCreditTextView")
-fun TextView.courDetailNbCreditText(item: Cour) {
-    text = item.nbCredit.toString()
-}
-
-@BindingAdapter("courDetailValidedTextView")
-fun TextView.courDetailValidedText(item: Cour) {
-    text = if(item.valided) "OK"
-    else "NOK"
-}
