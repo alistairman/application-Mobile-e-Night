@@ -46,7 +46,11 @@
         android:id="@+id/foodTrucksFragment"
         android:name="com.example.enight.view.foodTrucks.FoodTruckFragment"
         android:label="@string/Food_Trucks_List_label"
-        tools:layout="@layout/food_trucks_fragment" />
+        tools:layout="@layout/food_trucks_fragment" >
+        <action
+            android:id="@+id/action_foodTrucksFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/courDetailFragment"
         android:name="com.example.enight.view.courDetail.CourDetailFragment"
@@ -57,4 +61,9 @@
             android:name="courId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.enight.MapsFragment"
+        android:label="@string/find_food_truck"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

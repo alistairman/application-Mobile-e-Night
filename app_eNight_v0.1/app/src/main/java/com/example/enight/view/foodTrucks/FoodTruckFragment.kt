@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.enight.R
 import com.example.enight.dataBase.EnightDB
@@ -46,7 +47,8 @@ class FoodTruckFragment : Fragment() {
          */
         val adapterRecycleView = FoodTrucksAdapter(FoodTruckListener { foodTruckLocation ->
             Toast.makeText(context, foodTruckLocation , Toast.LENGTH_LONG).show()
-            viewModel.onFoodTruckClicked(foodTruckLocation)
+            findNavController().navigate(R.id.action_foodTrucksFragment_to_mapsFragment)
+            //viewModel.onFoodTruckClicked(foodTruckLocation)
         })
 
         binding.recyclerViewFoodtrucks.adapter = adapterRecycleView
