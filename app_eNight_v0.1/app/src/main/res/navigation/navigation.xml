@@ -55,5 +55,8 @@
         android:label="@string/courDetail_label"
         tools:layout="@layout/cour_detail_fragment">
 
+        <argument
+            android:name="courId"
+            app:argType="string" />
     </fragment>
 </navigation>

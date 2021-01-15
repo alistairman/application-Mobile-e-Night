@@ -28,9 +28,9 @@ class CourDetailFragment : Fragment() {
           inflater, R.layout.cour_detail_fragment,container, false)
 
         val application = requireNotNull(this.activity).application
-        //val arguments = CourDetailFragmentArgs.fromBundle(requireArguments())
+        val arguments = CourDetailFragmentArgs.fromBundle(requireArguments())
         val dataSource = EnightDB.getInstance(application).courDatabaseDao
-        val viewModelFactory = CourDetailViewModelFactory(dataSource,application)
+        val viewModelFactory = CourDetailViewModelFactory(arguments.courId,dataSource,application)
         val viewModel = ViewModelProvider(this,viewModelFactory).get(CourDetailViewModel::class.java)
 
 

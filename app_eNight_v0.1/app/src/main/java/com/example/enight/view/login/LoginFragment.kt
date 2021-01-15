@@ -101,7 +101,7 @@ class LoginFragment : Fragment() {
         Toast.makeText(activity, " Email Validé ", Toast.LENGTH_LONG).show()
         binding.editTextLoginEmail.setTextColor(BLACK)
         viewModel.getMail()
-        showCurrentMail()
+        //showCurrentMail()
         findNavController().navigate(R.id.action_loginFragment2_to_courFragment)
     }
 

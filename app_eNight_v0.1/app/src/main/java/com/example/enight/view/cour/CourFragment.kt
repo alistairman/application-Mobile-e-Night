@@ -86,7 +86,7 @@ class CourFragment : Fragment() {
 
         viewModel.goToCourDetail.observe(viewLifecycleOwner, Observer { courId ->
             courId?.let {
-                findNavController().navigate(CourFragmentDirections.actionCourFragmentToCourDetailFragment())
+                findNavController().navigate(CourFragmentDirections.actionCourFragmentToCourDetailFragment(courId))
                 viewModel.onCourNavigated()
             }
         })

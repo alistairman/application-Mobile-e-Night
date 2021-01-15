@@ -8,7 +8,7 @@ import com.example.enight.dataBase.cour.Cour
 import com.example.enight.dataBase.cour.CourDatabaseDao
 
 class CourDetailViewModel(
-    //private val courId:String = "ALG3",
+    private val courId:String = "ALG3",
     private val database: CourDatabaseDao,
     application: Application
 ) : ViewModel() {
@@ -17,7 +17,10 @@ class CourDetailViewModel(
 
     //fun getCour() = cour
 
+    var value :String =""
+
     init {
+        value = courId
         //cour = database.getCourWithId(courId)
     }
 

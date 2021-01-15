@@ -17,10 +17,11 @@
         <TextView
             android:id="@+id/id_cour_detail_nbCredit"
             android:layout_width="101dp"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="109dp"
             android:textAlignment="center"
 
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/id_button_set_valided"
             app:layout_constraintEnd_toStartOf="@+id/id_cour_detail_valided"
             app:layout_constraintHorizontal_bias="0.328"
@@ -31,8 +32,9 @@
         <TextView
             android:id="@+id/id_cour_detail_valided"
             android:layout_width="101dp"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/id_button_set_valided"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.832"
@@ -44,7 +46,9 @@
             android:layout_width="358dp"
             android:layout_height="44dp"
             android:background="#96C4EA"
+            android:text="@{viewModel.value}"
             android:textAlignment="center"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/id_cour_detail_valided"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
