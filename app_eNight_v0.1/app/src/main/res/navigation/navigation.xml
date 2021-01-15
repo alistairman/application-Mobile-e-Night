@@ -65,5 +65,12 @@
         android:id="@+id/mapsFragment"
         android:name="com.example.enight.MapsFragment"
         android:label="@string/find_food_truck"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="geometry"
+            app:argType="float[]" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>

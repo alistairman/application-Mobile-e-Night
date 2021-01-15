@@ -39,9 +39,8 @@ class FoodTruckViewModel(
      */
     var foodTruckList = database.getAll()
 
-    //val _navigateToMap = MutableLiveData<String>()
 
-    private val _findFoodTruck = MutableLiveData<String>()
+    private val _findFoodTruck = MutableLiveData<FoodTruck>()
     val findFoodTruck
         get() = _findFoodTruck
 
@@ -106,8 +105,8 @@ class FoodTruckViewModel(
         }
     }
 
-    fun onFoodTruckClicked(foodTruckLocation: String) {
-        _findFoodTruck.value = foodTruckLocation
+    fun onFoodTruckClicked(foodTruck: FoodTruck) {
+        _findFoodTruck.value = foodTruck
     }
 
     fun onMapNavigated() {

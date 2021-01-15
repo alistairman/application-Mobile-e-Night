@@ -78,7 +78,7 @@ class FoodTruckDiffCallback : DiffUtil.ItemCallback<FoodTruck>() {
     }
 }
 
-class FoodTruckListener(val clickListener: (location: String) -> Unit) {
-    fun onClick(foodTruck: FoodTruck) = clickListener(foodTruck.location)
+class FoodTruckListener(val clickListener: (food: FoodTruck) -> Unit) {
+    fun onClick(foodTruck: FoodTruck) = clickListener(foodTruck)
 
 }

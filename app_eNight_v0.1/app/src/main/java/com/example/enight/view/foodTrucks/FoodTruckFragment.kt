@@ -45,10 +45,9 @@ class FoodTruckFragment : Fragment() {
         /**
          * this part create and set the adapter of recycle view
          */
-        val adapterRecycleView = FoodTrucksAdapter(FoodTruckListener { foodTruckLocation ->
-            Toast.makeText(context, foodTruckLocation , Toast.LENGTH_LONG).show()
-            findNavController().navigate(R.id.action_foodTrucksFragment_to_mapsFragment)
-            //viewModel.onFoodTruckClicked(foodTruckLocation)
+        val adapterRecycleView = FoodTrucksAdapter(FoodTruckListener { foodTruck ->
+            //Toast.makeText(context, foodTruckLocation.location , Toast.LENGTH_LONG).show()
+            viewModel.onFoodTruckClicked(foodTruck)
         })
 
         binding.recyclerViewFoodtrucks.adapter = adapterRecycleView
@@ -60,8 +59,11 @@ class FoodTruckFragment : Fragment() {
             it?.let { adapterRecycleView.submitList(it)}
         })
 
-        viewModel.findFoodTruck.observe(viewLifecycleOwner, { location ->
-            location?.let {
+        viewModel.findFoodTruck.observe(viewLifecycleOwner, { foodTruck ->
+            foodTruck?.let {
+                val array = floatArrayOf(foodTruck.geometryAlt,foodTruck.geometryLog)
+                val foodName = foodTruck.location
+                findNavController().navigate(FoodTruckFragmentDirections.actionFoodTrucksFragmentToMapsFragment(array,foodName))
                 viewModel.onMapNavigated()
             }
         })
